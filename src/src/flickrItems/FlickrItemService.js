@@ -47,6 +47,19 @@ angular.module('flickrItems')
           return item;
         },
 
+        // Adds an authorLink property to an item based on the item's link property
+        authorLink: function(item) {
+          var authorLink = item.link;
+
+          if (item.link.slice(-1) === "/") {
+            authorLink = authorLink.substring(0, authorLink.length - 1);
+          }
+
+          item.authorLink = authorLink.substr(0, authorLink.lastIndexOf("/"));
+
+          return item;
+        },
+
         // Transforms an item's published property into a readable representation
         published: function(item) {
           var published = new Date(item.published);
@@ -68,6 +81,7 @@ angular.module('flickrItems')
       angular.forEach(items, function(item) {
         item = filters.src(item);
         item = filters.author(item);
+        item = filters.authorLink(item);
         item = filters.published(item);
       });
 
