@@ -21,7 +21,7 @@
     self.items        = [ ];
     self.selectItem   = selectItem;
     self.toggleList   = toggleList;
-    self.showContactOptions  = showContactOptions;
+    self.showItemDetails  = showItemDetails;
 
     // Load all items
 
@@ -63,14 +63,14 @@
     /**
      * Show the bottom sheet
      */
-    function showContactOptions($event) {
+    function showItemDetails($event) {
         var item = self.selected;
 
         return $mdBottomSheet.show({
           parent: angular.element(document.getElementById('content')),
-          templateUrl: './src/flickrItems/view/contactSheet.html',
-          controller: [ '$mdBottomSheet', ContactPanelController],
-          controllerAs: "contactCtrl",
+          templateUrl: './src/flickrItems/view/detailsSheet.html',
+          controller: [ '$mdBottomSheet', DetailsPanelController],
+          controllerAs: "detailsCtrl",
           bindToController : true,
           targetEvent: $event
         }).then(function(clickedOption) {
@@ -82,7 +82,7 @@
         /**
          * Bottom Sheet controller for the Avatar Actions
          */
-        function ContactPanelController( $mdBottomSheet ) {
+        function DetailsPanelController( $mdBottomSheet ) {
           this.item = item;
           this.actions = [
             { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},

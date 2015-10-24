@@ -19,9 +19,9 @@ FN:31,(anonymous_3)
 FN:46,toggleList
 FN:49,(anonymous_5)
 FN:58,selectItem
-FN:66,showContactOptions
+FN:66,showItemDetails
 FN:76,(anonymous_8)
-FN:85,ContactPanelController
+FN:85,DetailsPanelController
 FN:93,(anonymous_10)
 FNF:10
 FNH:1
@@ -31,9 +31,9 @@ FNDA:0,(anonymous_3)
 FNDA:0,toggleList
 FNDA:0,(anonymous_5)
 FNDA:0,selectItem
-FNDA:0,showContactOptions
+FNDA:0,showItemDetails
 FNDA:0,(anonymous_8)
-FNDA:0,ContactPanelController
+FNDA:0,DetailsPanelController
 FNDA:0,(anonymous_10)
 DA:1,1
 DA:3,1
