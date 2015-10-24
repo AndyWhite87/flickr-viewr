@@ -37,12 +37,37 @@
     <md-content flex id="content">
 
       <md-list>
-      
+
         <md-list-item ng-repeat="item in ctrl.items">
-            <md-button ng-click="ctrl.selectItem(item)" ng-class="{'selected' : item === ctrl.selected }">
-              <img src="{{item.media.m}}"></img>
-              {{item.title}}
-            </md-button>
+              
+          <md-content flex layout="row" layout-align="left">
+
+            <img src="{{item.media.m}}" ng-click="ctrl.selectItem(item)"></img>
+            
+            <md-content layout="column">
+
+              <span class="title" ng-click="ctrl.selectItem(item)">{{item.title}}</span>
+
+              <md-content layout="row">
+
+                <span flex>
+                  <a href="{{item.link}}" target="flickrViewr-Flickr" class="md-flat">
+                    {{item.author}}
+                  </a>
+                </span>
+
+                <span flex>{{item.published}}</span>
+
+                <span flex>
+                  <a href="{{item.link}}" target="flickrViewr-Flickr" class="md-flat">
+                    View on Flickr
+                  </a>
+                </span>
+
+              </md-content>
+            </md-content>
+          </md-content>
+
         </md-list-item>
 
       </md-list>
