@@ -63,7 +63,7 @@
         var item = self.selected;
 
         return $mdBottomSheet.show({
-          parent: angular.element(document.getElementById('content')),
+          parent: angular.element(document.body),
           templateUrl: './src/flickrItems/view/detailsSheet.html',
           controller: [ '$mdBottomSheet', DetailsPanelController],
           controllerAs: "detailsCtrl",

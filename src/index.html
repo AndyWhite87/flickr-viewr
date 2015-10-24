@@ -42,11 +42,11 @@
               
           <md-content flex layout="row" layout-align="left">
 
-            <img src="{{item.src}}" ng-click="ctrl.showItemDetails(item)"></img>
+            <img src="{{item.src}}" ng-click="ctrl.selectItem(item); ctrl.showItemDetails($event)"></img>
             
             <md-content layout="column" flex>
 
-              <span class="title" ng-click="ctrl.showItemDetails(item)">{{item.title}}</span>
+              <span class="title" ng-click="ctrl.selectItem(item); ctrl.showItemDetails($event)">{{item.title}}</span>
 
               <md-content layout="row">
 
