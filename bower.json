@@ -1,0 +1,19 @@
+{
+  "name": "flickr-viewr",
+  "description": "A flickr feed viewer built with AngularJS and Angular Material",
+  "version": "0.0.1",
+  "author": "Andy White",
+  "contact": "https://twitter.com/etihWydnA",
+  "homepage": "https://github.com/AndyWhite87/flickr-viewr/",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "^1.4.6",
+    "angular-animate": "^1.4.6",
+    "angular-aria": "^1.4.6",
+    "angular-material": "^0.11.2"
+  },
+  "devDependencies": {
+    "angular-material": "https://github.com/angular/bower-material.git#master"
+  }
+}
