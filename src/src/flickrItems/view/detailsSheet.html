@@ -5,9 +5,11 @@
     </md-subheader>
 
     <md-list>
+
+      <img src="{{detailsCtrl.item.src}}"></img>
+
       <md-item ng-repeat="action in detailsCtrl.actions">
         <md-button ng-click="detailsCtrl.submitContact(action)" id="action_{{$index}}">
-            <img src="{{item.media.m}}"></img>
             <md-icon md-svg-icon="{{ action.icon_url }}"></md-icon>
             {{action.name}}
         </md-button>

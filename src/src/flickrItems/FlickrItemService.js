@@ -17,15 +17,33 @@
               '&format=json' +
               '&tags=potato';
 
-    var items = [];
+    // Adds a src attribute to each object in an array, based on that object's media.m property
+    function getHighResImages(items) {
+
+      angular.forEach(items, function(item) {
+        
+        var media = item.media.m;
+        var fileEnding = media.slice(-6);
+
+        if (fileEnding === '_m.jpg') {
+          var src = media.substring(0, media.length - 6) + media.slice(-4);
+          item.src = src;
+        }
+      });
+
+      return items;
+    }
 
     return {
       loadAllItems : function() {
         return $q.when($http.jsonp(url).then(
           function successCallback(response) {
 
-            items = response.data.items;
-            return items;
+            var items = response.data.items;
+
+            var editedItems = getHighResImages(items);
+
+            return editedItems;
 
           },
           function errorCallback(response) {

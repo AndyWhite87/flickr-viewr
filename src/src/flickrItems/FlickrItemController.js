@@ -24,13 +24,9 @@
     self.showItemDetails  = showItemDetails;
 
     // Load all items
-
-
     itemService
       .loadAllItems()
       .then( function( items ) {
-        $log.debug(items);
-        $log.debug(items[0]);
         self.items    = [].concat(items);
         self.selected = items[0];
       });
