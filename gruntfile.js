@@ -89,11 +89,25 @@ module.exports = function(grunt) {
     },
 
     /**
-     * Watch setup. The configured tasks will run when and of the files tested by JSHint are changed
+     * Less setup
+     */
+    less: {
+      dev: {
+        options: {
+            paths: ['<%= s %>less/**/*.less'], // Process all Less files in Less folder
+        },
+        files: {
+          "<%= s %>assets/app.css": "<%= s %>less/_styles.less" // Build app.css based on _styles.less
+        }
+      } 
+    },
+
+    /**
+     * Watch setup. The configured tasks will run when JSHint or Less source files are changed
      */
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'jasmine']
+      files: ['<%= jshint.files %>', '<%= less.dev.options.paths %>'],
+      tasks: ['less', 'jshint', 'jasmine']
     },
 
     /**
@@ -113,6 +127,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-coveralls');
 
