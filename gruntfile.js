@@ -21,9 +21,9 @@ module.exports = function(grunt) {
     concat: {
       dist: {
         src: [
-          '<%=s%>src/users/Users.js',
-          '<%=s%>src/users/UserController.js',
-          '<%=s%>src/users/UserService.js'
+          '<%=s%>src/flickrItems/FlickrItems.js',
+          '<%=s%>src/flickrItems/FlickrItemController.js',
+          '<%=s%>src/flickrItems/FlickrItemService.js'
         ],
         dest: '<%= d %><%= filename %>.js'
       }
