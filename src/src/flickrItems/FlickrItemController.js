@@ -14,13 +14,10 @@
    * @param avatarsService
    * @constructor
    */
-  function FlickrItemController( itemService, $mdSidenav, $mdBottomSheet, $log, $http, $q) {
+  function FlickrItemController(itemService, $mdSidenav, $mdBottomSheet, $log, $http, $q) {
     var self = this;
-
-    self.selected     = null;
-    self.items        = [ ];
-    self.selectItem   = selectItem;
-    self.toggleList   = toggleList;
+    self.selected         = null;
+    self.items            = [ ];
     self.showItemDetails  = showItemDetails;
 
     // Load all items
@@ -36,31 +33,12 @@
     // *********************************
 
     /**
-     * First hide the bottomsheet IF visible, then
-     * hide or Show the 'left' sideNav area
+     * Show the details sheet
+     * @param item id
+     * @param event
      */
-    function toggleList() {
-      var pending = $mdBottomSheet.hide() || $q.when(true);
-
-      pending.then(function(){
-        $mdSidenav('left').toggle();
-      });
-    }
-
-    /**
-     * Select the current avatars
-     * @param menuId
-     */
-    function selectItem ( item ) {
-      self.selected = angular.isNumber(item) ? $scope.items[item] : item;
-      self.toggleList();
-    }
-
-    /**
-     * Show the bottom sheet
-     */
-    function showItemDetails($event) {
-        var item = self.selected;
+    function showItemDetails(item, $event) {
+        self.selected = item;
 
         return $mdBottomSheet.show({
           parent: angular.element(document.body),
@@ -76,9 +54,10 @@
         });
 
         /**
-         * Bottom Sheet controller for the Avatar Actions
+         * Bottom Sheet controller for the detail actions
+         * @param $mdBottomSheet
          */
-        function DetailsPanelController( $mdBottomSheet ) {
+        function DetailsPanelController($mdBottomSheet) {
           this.item = item;
           this.actions = [
             { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
