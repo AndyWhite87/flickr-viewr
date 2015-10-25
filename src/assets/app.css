@@ -7,16 +7,12 @@ body {
   padding: 0px;
   overflow: hidden;
 }
+/* Variables */
 /* Core content styles */
 md-content.md-default-theme,
 md-content {
-  color: inherit;
+  color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
-}
-#content {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
 }
 #content .md-button.contact {
   background-color: transparent;
