@@ -107,7 +107,7 @@
         this.tags = self.tags;
 
         this.search = function() {
-          self.tags = this.tags
+          self.tags = this.tags;
           self.searchTags();
         };
 
