@@ -1,15 +1,25 @@
 <md-bottom-sheet class="md-list md-has-header">
 
-    <md-subheader>
-        <h1 class="md-display-1">
-            <a href="{{detailsCtrl.item.link}}" target="flickrViewr-Flickr">{{ detailsCtrl.item.title }}</a>
-        </h1>
+    <md-content flex layout="row">
 
-        <h2 class="md-subhead">
-            <a href="{{detailsCtrl.item.authorLink}}" target="flickrViewr-Flickr">{{detailsCtrl.item.author}}</a>
-            | Published: {{detailsCtrl.item.published}}
-        </h2>
-    </md-subheader>
+        <md-subheader flex>
+            <h1 class="md-display-1">
+                <a href="{{detailsCtrl.item.link}}" target="flickrViewr-Flickr">{{ detailsCtrl.item.title }}</a>
+            </h1>
+
+            <h2 class="md-subhead">
+                <a href="{{detailsCtrl.item.authorLink}}" target="flickrViewr-Flickr">{{detailsCtrl.item.author}}</a>
+                | Published: {{detailsCtrl.item.published}}
+            </h2>
+        </md-subheader>
+
+        <div flex="none">
+            <md-button class="md-primary" ng-click="detailsCtrl.close()">
+                Back
+            </md-button>
+        </div>
+
+    </md-content>
 
     <md-content flex layout="row" layout-align="left">
 

@@ -67,6 +67,7 @@
          * @param $mdBottomSheet
          */
         function DetailsPanelController($mdBottomSheet) {
+
           this.item = item;
           this.actions = [
             { name: 'Phone'       , icon: 'phone'       , icon_url: 'assets/svg/phone.svg'},
@@ -74,8 +75,13 @@
             { name: 'Google+'     , icon: 'google_plus' , icon_url: 'assets/svg/google_plus.svg'},
             { name: 'Hangout'     , icon: 'hangouts'    , icon_url: 'assets/svg/hangouts.svg'}
           ];
+
           this.submitContact = function(action) {
             $mdBottomSheet.hide(action);
+          };
+
+          this.close = function() {
+            $mdBottomSheet.hide();
           };
         }
     }
