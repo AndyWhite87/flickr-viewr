@@ -20,11 +20,23 @@ angular.module('flickrItems')
     var url = 'https://api.flickr.com/services/feeds/photos_public.gne' +
               '?jsoncallback=JSON_CALLBACK' +
               '&format=json' +
-              '&tags=potato';
+              '&tags=';
+
+    // Convert space-separated tags into a stringified array of tags
+    var formattedTags = function(tags) {
+
+      if (typeof tags !== 'string') {
+        return "";
+      }
+
+      var formattedTags = tags.split(' ');
+      return formattedTags.toString();
+
+    };
 
     return {
-      loadAllItems : function() {
-        return $q.when($http.jsonp(url).then(
+      loadAllItems : function(tags) {
+        return $q.when($http.jsonp(url + formattedTags(tags)).then(
           function successCallback(response) {
 
             var items = response.data.items;

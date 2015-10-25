@@ -7,6 +7,9 @@
       <input id="tags-search-input"
              aria-label="Search for tags"
              type="text"
+             ng-model="tagSearchCtrl.tags"
+             ng-model-options="{ debounce: 300 }"
+             ng-change="tagSearchCtrl.search()"
              ng-blur="tagSearchCtrl.close()">
 
     </md-input-container>

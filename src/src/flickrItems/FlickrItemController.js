@@ -17,21 +17,29 @@
   function FlickrItemController(itemService, $mdBottomSheet, $mdToast, $log, $http, $q) {
     var self = this;
     self.selected         = null;
+    self.tags             = 'potato'; // Default tag(s) to search for
     self.items            = [ ];
     self.showItemDetails  = showItemDetails;
     self.showTagSearch    = showTagSearch;
+    self.searchTags       = searchTags;
 
-    // Load all items
-    itemService
-      .loadAllItems()
-      .then( function( items ) {
-        self.items    = [].concat(items);
-        self.selected = items[0];
-      });
+    // Fire initial search
+    self.searchTags();
 
     // *********************************
     // Internal methods
     // *********************************
+
+    /**
+     * Search for tags (using self.tags)
+     */
+    function searchTags() {
+      itemService
+        .loadAllItems(self.tags)
+        .then( function( items ) {
+          self.items    = [].concat(items);
+        });
+    }
 
     /**
      * Show the details sheet
@@ -91,10 +99,18 @@
       }, 0);
 
       /**
-       * Toast controller for tags search area
+       * Controller for tags search area
        * @param $mdToast
        */
       function TagsSearchController($mdToast) {
+
+        this.tags = self.tags;
+
+        this.search = function() {
+          self.tags = this.tags
+          self.searchTags();
+        };
+
         this.close = function() {
           $mdToast.hide();
         };
