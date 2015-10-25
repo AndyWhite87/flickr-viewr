@@ -64,6 +64,14 @@ md-bottom-sheet {
 md-bottom-sheet md-icon {
   margin-right: 20px;
 }
+md-bottom-sheet .md-chips .md-chip {
+  background: #e0e0e0;
+  cursor: pointer;
+}
+md-bottom-sheet .md-chips .md-chip:hover,
+md-bottom-sheet .md-chips .md-chip:active {
+  background: #c7c7c7;
+}
 span.name {
   font-weight: bold;
   font-size: 1.1em;

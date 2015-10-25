@@ -80,6 +80,12 @@
             $mdBottomSheet.hide(action);
           };
 
+          this.search = function(tag) {
+            self.tags = tag;
+            self.searchTags();
+            setTimeout(this.close, 300);
+          };
+
           this.close = function() {
             $mdBottomSheet.hide();
           };

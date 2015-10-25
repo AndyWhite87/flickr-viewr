@@ -36,7 +36,15 @@
             <div layout-padding ng-if="detailsCtrl.item.tags.length > 0">
                 <md-content flex layout="column">
                     <h3 flex class="md-body-1">Tags:</h3>
-                    <md-chips ng-model="detailsCtrl.item.tags" readonly="true"></md-chips>
+
+                    <div class="md-chips">
+                        <span ng-repeat="tag in detailsCtrl.item.tags">
+                            <md-chip class="md-chip" ng-click="detailsCtrl.search(tag)">
+                                <div class="md-chip-content">{{tag}}</div>
+                            </md-chip>
+                        </span>
+                    </div>
+
                 </md-content>
             </div>
 
