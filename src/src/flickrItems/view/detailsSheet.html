@@ -24,7 +24,10 @@
             </div>
 
             <div layout-padding>
-                Tags: {{detailsCtrl.item.tags}}
+                <md-content flex layout="column">
+                    <h3 flex class="md-body-1">Tags:</h3>
+                    <md-chips ng-model="detailsCtrl.item.tags" readonly="true"></md-chips>
+                </md-content>
             </div>
 
         </md-content>

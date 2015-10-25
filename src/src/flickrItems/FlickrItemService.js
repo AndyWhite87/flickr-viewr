@@ -3,7 +3,8 @@
 
 angular.module('flickrItems')
        .service('flickrItemService', ['$q', '$http', '$filter', '$log',
-                                      'itemSrcFilter', 'itemAuthorFilter', 'itemAuthorLinkFilter', 'itemPublishedFilter', 'itemDescriptionFilter',
+                                      'itemSrcFilter', 'itemAuthorFilter', 'itemAuthorLinkFilter',
+                                      'itemPublishedFilter', 'itemDescriptionFilter', 'itemTagsFilter',
                                       ItemService]);
 
   /**
@@ -12,7 +13,9 @@ angular.module('flickrItems')
    * @returns {{loadAllItems: Function}}
    * @constructor
    */
-  function ItemService($q, $http, $filter, $log, itemSrcFilter, itemAuthorFilter, itemAuthorLinkFilter, itemPublishedFilter, itemDescriptionFilter) {
+  function ItemService($q, $http, $filter, $log, 
+                       itemSrcFilter, itemAuthorFilter, itemAuthorLinkFilter,
+                       itemPublishedFilter, itemDescriptionFilter, itemTagsFilter) {
 
     var url = 'https://api.flickr.com/services/feeds/photos_public.gne' +
               '?jsoncallback=JSON_CALLBACK' +
@@ -33,6 +36,7 @@ angular.module('flickrItems')
               item = itemAuthorLinkFilter(item);
               item = itemPublishedFilter(item);
               item = itemDescriptionFilter(item);
+              item = itemTagsFilter(item);
             });
 
             return items;
