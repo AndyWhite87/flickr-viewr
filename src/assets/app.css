@@ -170,3 +170,12 @@ md-toolbar h1 {
     line-height: 16px;
   }
 }
+/* Link styles */
+a {
+  text-decoration: none;
+  color: #2196f3;
+}
+a:hover,
+aactive {
+  color: #f44336;
+}
