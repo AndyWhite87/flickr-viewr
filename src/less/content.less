@@ -2,7 +2,8 @@
 /* Core content styles */
 
 // Prevent white background in md-content areas
-md-content.md-default-theme, md-content {
+md-content.md-default-theme, md-content,
+.md-subheader.md-default-theme, .md-subheader {
     color: @text-color;
     background-color: transparent;
 }
@@ -21,8 +22,35 @@ md-content.md-default-theme, md-content {
     right: 40px;
   }
 
+  md-list-item {
+    padding: 0;
+
+    &:nth-child(even) {
+      background: @gray-light;
+    }
+  }
+
   md-icon.avatar {
     margin-top: 10px;
+  }
+
+  .md-subheader {
+    h1 {
+      margin-top: 0;
+
+      a {
+        display: block;
+
+        span {
+          display: block;
+          overflow: hidden;
+          height: 1.25em;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+
+    }
   }
 
   .md-button.contact > md-icon {
