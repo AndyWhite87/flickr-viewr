@@ -32,7 +32,7 @@ md-content {
   width: 36px;
   height: 36px;
 }
-md-button.menuBtn > md-icon {
+#content md-button.menuBtn > md-icon {
   fill: white;
   width: 24px;
   height: 24px;
@@ -49,7 +49,7 @@ md-button.menuBtn > md-icon {
   width: 33%;
   max-width: 500px;
 }
-.content-wrapper {
+#content .content-wrapper {
   position: relative;
 }
 /* Image details area */
