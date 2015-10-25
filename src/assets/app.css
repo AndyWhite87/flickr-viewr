@@ -52,6 +52,10 @@ md-button.menuBtn > md-icon {
   position: relative;
 }
 /* Image details area */
+md-bottom-sheet {
+  overflow-y: auto;
+  max-height: 100%;
+}
 md-bottom-sheet md-icon {
   margin-right: 20px;
 }

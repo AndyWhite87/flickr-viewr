@@ -1,13 +1,34 @@
 <md-bottom-sheet class="md-list md-has-header">
 
     <md-subheader>
-        Contact<span class="name">{{ detailsCtrl.item.author }}</span>:
+        <h1 class="md-display-1">
+            <a href="{{detailsCtrl.item.link}}" target="flickrViewr-Flickr">{{ detailsCtrl.item.title }}</a>
+        </h1>
+
+        <h2 class="md-subhead">
+            <a href="{{detailsCtrl.item.authorLink}}" target="flickrViewr-Flickr">{{detailsCtrl.item.author}}</a>
+            | Published: {{detailsCtrl.item.published}}
+        </h2>
     </md-subheader>
 
+    <md-content flex layout="row" layout-align="left">
+
+        <div layout-padding>
+            <img src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
+        </div>
+
+        <md-content flex layout="column" layout-align="top">
+            <div layout-padding>
+                {{detailsCtrl.item.description}}
+            </div>
+            <div layout-padding>
+                Tags: {{detailsCtrl.item.tags}}
+            </div>
+        </md-content>
+
+    </md-content>
+
     <md-list>
-
-      <img src="{{detailsCtrl.item.src}}"></img>
-
       <md-item ng-repeat="action in detailsCtrl.actions">
         <md-button ng-click="detailsCtrl.submitContact(action)" id="action_{{$index}}">
             <md-icon md-svg-icon="{{ action.icon_url }}"></md-icon>

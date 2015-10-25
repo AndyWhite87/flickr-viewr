@@ -46,25 +46,33 @@
             
             <md-content layout="column" flex>
 
-              <span class="title" ng-click="ctrl.showItemDetails(item, $event)">{{item.title}}</span>
+              <md-subheader>
+                  <h1 class="md-display-1">
+                      <a href="" ng-click="ctrl.showItemDetails(item, $event)">{{item.title}}</a>
+                  </h1>
 
-              <md-content layout="row">
+                  <h2 class="md-subhead">
 
-                <span flex>
-                  <a href="{{item.authorLink}}" target="flickrViewr-Flickr" class="md-flat">
-                    {{item.author}}
-                  </a>
-                </span>
+                        <md-content layout="row">
 
-                <span flex>Published: {{item.published}}</span>
+                          <span flex>
+                            <a href="{{item.authorLink}}" target="flickrViewr-Flickr">
+                              {{item.author}}
+                            </a>
+                          </span>
 
-                <span flex>
-                  <a href="{{item.link}}" target="flickrViewr-Flickr" class="md-flat">
-                    View on Flickr
-                  </a>
-                </span>
+                          <span flex>Published: {{item.published}}</span>
 
-              </md-content>
+                          <span flex>
+                            <a href="{{item.link}}" target="flickrViewr-Flickr">
+                              View on Flickr
+                            </a>
+                          </span>
+
+                        </md-content>
+                  </h2>
+              </md-subheader>
+
             </md-content>
           </md-content>
 
