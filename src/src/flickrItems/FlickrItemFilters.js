@@ -68,13 +68,48 @@
         var published = new Date(item.published);
 
         if (typeof published.getMilliseconds === 'function') {
-          var daySuffixes = ["th", "st", "nd", "rd"];
+          var daySuffixes = ['th', 'st', 'nd', 'rd'];
           var day = $filter('date')(published, 'dd');
           var relevantDigits = (day < 30) ? day % 20 : day % 30; // From http://stackoverflow.com/a/24061264
           var daySuffix = (relevantDigits <= 3) ? daySuffixes[relevantDigits] : daySuffixes[0];
 
           item.published = day + daySuffix + $filter('date')(published, " MMM yyyy 'at' h:mm");
         }
+
+        return item;
+
+      };
+
+    })
+
+    // Removes unwanted HTML from an item's description property
+    .filter('itemDescription', function() {
+
+      return function(item) {
+
+        var descriptionParts = item.description.split('<p>');
+        var description = descriptionParts[descriptionParts.length - 1];
+
+        if (description.slice(-4) === '</p>') {
+          description = description.substring(0, description.length - 4);
+        }
+
+        var descriptionLines;
+        if (description.indexOf('<img ') !== -1) {
+          descriptionLines = [];
+        }
+        else {
+          descriptionLines = description.split('<br />');
+
+          angular.forEach(descriptionLines, function(v, k) {
+            var line = descriptionLines[k];
+            if (typeof line === 'string') {
+              descriptionLines[k] = line.trim();
+            }
+          });
+        }
+
+        item.description = descriptionLines;
 
         return item;
 

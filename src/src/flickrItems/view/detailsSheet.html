@@ -18,12 +18,15 @@
         </div>
 
         <md-content flex layout="column" layout-align="top">
-            <div layout-padding>
-                {{detailsCtrl.item.description}}
+
+            <div layout-padding ng-if="detailsCtrl.item.description.length > 0">
+                <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
             </div>
+
             <div layout-padding>
                 Tags: {{detailsCtrl.item.tags}}
             </div>
+
         </md-content>
 
     </md-content>
