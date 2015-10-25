@@ -138,7 +138,7 @@
 
         // Split the item's tag on each space character to create an array
         if (typeof item.tags === 'string') {
-          item.tags = (item.tags.length > 0) ? item.tags.split(' ') : item.tags;
+          item.tags = (item.tags.length > 0) ? item.tags.split(' ') : [];
         }
 
         return item;
