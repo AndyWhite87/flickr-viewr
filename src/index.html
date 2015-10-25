@@ -28,13 +28,8 @@
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
     <md-toolbar layout="row" class="md-whiteframe-z1" id="toolbar">
-      <md-button class="menu" hide-gt-sm ng-click="ctrl.toggleList()" aria-label="Show User List">
-        <md-icon md-svg-icon="menu" ></md-icon>
-      </md-button>
-      <h1>Flickr Viewr</h1>
-
-      <md-button class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
-
+      <h1 flex>Flickr Viewr</h1>
+      <md-button flex="none" class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
     </md-toolbar>
 
     <md-content flex id="content">
