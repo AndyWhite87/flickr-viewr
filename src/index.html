@@ -40,43 +40,43 @@
               
           <md-content flex layout="row" layout-align="left">
 
-            <img src="{{item.src}}" ng-click="ctrl.showItemDetails(item, $event)"></img>
+            <div flex="none"
+                 class="layout-column photo-wrap"
+                 ng-click="ctrl.showItemDetails(item, $event)"
+                 style="background-image:url('{{item.src}}');">
+            </div>            
             
-            <md-content layout="column" flex>
-
-              <md-subheader>
-                <h1 class="md-display-1">
+              <md-subheader layout="column" flex>
+                <h1 class="md-display-3">
                   <a href="" ng-click="ctrl.showItemDetails(item, $event)"><span>{{item.title}}</span></a>
                 </h1>
 
                 <h2 class="md-subhead">
 
-                <md-content layout="row" hide show-sm>
-                  <span>Published: {{item.published}}</span>
-                </md-content>
+                  <md-content layout="row" hide show-sm>
+                    <span>{{item.published}}</span>
+                  </md-content>
 
-                <md-content layout="row">
+                  <md-content layout="row">
 
-                  <span flex>
-                  <a href="{{item.authorLink}}" target="flickrViewr-Flickr">
-                    {{item.author}}
-                  </a>
-                  </span>
+                    <span flex flex-gt-sm="20">
+                      <a class="author-link" href="{{item.authorLink}}" target="flickrViewr-Flickr">
+                        {{item.author}}
+                      </a>
+                    </span>
 
-                  <span flex hide-sm>Published: {{item.published}}</span>
+                    <span flex="50" hide-sm>Published: {{item.published}}</span>
 
-                  <span flex>
-                  <a href="{{item.link}}" target="flickrViewr-Flickr">
-                    View on Flickr
-                  </a>
-                  </span>
+                    <span flex flex-gt-sm="30">
+                      <a class="photo-link" href="{{item.link}}" target="flickrViewr-Flickr">
+                        View on Flickr
+                      </a>
+                    </span>
 
-                </md-content>
+                  </md-content>
                 
                 </h2>
               </md-subheader>
-
-            </md-content>
           </md-content>
 
         </md-list-item>

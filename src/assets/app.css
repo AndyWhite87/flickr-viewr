@@ -29,14 +29,41 @@ md-content,
 #content md-list-item {
   padding: 0;
 }
+#content md-list-item .photo-wrap {
+  cursor: pointer;
+  border: 2px solid #e0e0e0;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 2em;
+  width: 20em;
+  height: 20em;
+}
+@media (max-width: 600px) {
+  #content md-list-item .photo-wrap {
+    margin: 1em;
+    margin-right: 0;
+    width: 8em;
+    height: 8em;
+  }
+}
 #content md-list-item:nth-child(even) {
   background: #ededed;
+}
+#content md-list-item:nth-child(even) .photo-wrap {
+  border-color: #ffffff;
 }
 #content md-icon.avatar {
   margin-top: 10px;
 }
 #content .md-subheader h1 {
-  margin-top: 0;
+  margin-top: 1.25em;
+}
+@media (max-width: 600px) {
+  #content .md-subheader h1 {
+    margin-top: 0;
+  }
 }
 #content .md-subheader h1 a {
   display: block;
@@ -47,6 +74,17 @@ md-content,
   height: 1.25em;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+#content .md-subheader h2 {
+  margin-bottom: 0;
+}
+#content .md-subheader h2 .author-link {
+  display: block;
+  height: 1.25em;
+  margin-right: 0.5em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 #content .md-button.contact > md-icon {
   fill: black;
@@ -120,4 +158,15 @@ md-toolbar h1 {
 }
 #tags-search-container input {
   color: #fff;
+}
+/* Override styles for small screens */
+@media (max-width: 600px) {
+  .md-display-3 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  md-content {
+    font-size: 12px;
+    line-height: 16px;
+  }
 }
