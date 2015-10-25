@@ -23,7 +23,7 @@
                 <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
             </div>
 
-            <div layout-padding>
+            <div layout-padding ng-if="detailsCtrl.item.tags.length > 0">
                 <md-content flex layout="column">
                     <h3 flex class="md-body-1">Tags:</h3>
                     <md-chips ng-model="detailsCtrl.item.tags" readonly="true"></md-chips>
