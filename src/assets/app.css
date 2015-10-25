@@ -8,6 +8,11 @@ body {
   overflow: hidden;
 }
 /* Core content styles */
+md-content.md-default-theme,
+md-content {
+  color: inherit;
+  background-color: transparent;
+}
 #content {
   padding-left: 40px;
   padding-right: 40px;
@@ -76,4 +81,11 @@ md-toolbar h1 {
   margin: auto;
   font-size: 1.250em;
   font-weight: 400;
+}
+/* Search input */
+#tags-search-container {
+  padding-bottom: 0.5em;
+}
+#tags-search-container input {
+  color: #fff;
 }

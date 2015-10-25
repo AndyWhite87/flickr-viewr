@@ -3,7 +3,7 @@
   angular
        .module('flickrItems')
        .controller('FlickrItemController', [
-          'flickrItemService', '$mdSidenav', '$mdBottomSheet', '$log', '$http', '$q',
+          'flickrItemService', '$mdBottomSheet', '$mdToast', '$log', '$http', '$q',
           FlickrItemController
        ]);
 
@@ -14,11 +14,12 @@
    * @param avatarsService
    * @constructor
    */
-  function FlickrItemController(itemService, $mdSidenav, $mdBottomSheet, $log, $http, $q) {
+  function FlickrItemController(itemService, $mdBottomSheet, $mdToast, $log, $http, $q) {
     var self = this;
     self.selected         = null;
     self.items            = [ ];
     self.showItemDetails  = showItemDetails;
+    self.showTagSearch    = showTagSearch;
 
     // Load all items
     itemService
@@ -71,6 +72,35 @@
         }
     }
 
+    /**
+     * Show the tags search area
+     */
+    function showTagSearch() {
+
+      $mdToast.show({
+        parent : angular.element(document.querySelector('#toolbar')),
+        templateUrl: './src/flickrItems/view/tagsSearch.html',
+        controller: [ '$mdToast', TagsSearchController],
+        controllerAs: "tagSearchCtrl",
+        position: 'top right',
+        hideDelay: 0,
+      });
+
+      setTimeout(function(){
+        document.querySelector('#tags-search-input').focus();
+      }, 0);
+
+      /**
+       * Toast controller for tags search area
+       * @param $mdToast
+       */
+      function TagsSearchController($mdToast) {
+        this.close = function() {
+          $mdToast.hide();
+        };
+      }
+
+    }
   }
 
 })();
