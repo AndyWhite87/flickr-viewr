@@ -1,0 +1,64 @@
+<md-bottom-sheet class="md-list md-has-header">
+
+    <md-content flex layout="row">
+
+        <md-subheader flex>
+            <h1 class="md-display-1">
+                <a href="{{detailsCtrl.item.link}}" target="flickrViewr-Flickr">{{ detailsCtrl.item.title }}</a>
+            </h1>
+
+            <h2 class="md-subhead">
+                <a href="{{detailsCtrl.item.authorLink}}" target="flickrViewr-Flickr">{{detailsCtrl.item.author}}</a>
+                | Published: {{detailsCtrl.item.published}}
+            </h2>
+        </md-subheader>
+
+        <div flex="none">
+            <md-button class="md-primary" ng-click="detailsCtrl.close()">
+                Back
+            </md-button>
+        </div>
+
+    </md-content>
+
+    <md-content flex layout="row" layout-align="left">
+
+        <div layout-padding>
+            <img src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
+        </div>
+
+        <md-content flex layout="column" layout-align="top">
+
+            <div layout-padding ng-if="detailsCtrl.item.description.length > 0">
+                <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
+            </div>
+
+            <div layout-padding ng-if="detailsCtrl.item.tags.length > 0">
+                <md-content flex layout="column">
+                    <h3 flex class="md-body-1">Tags:</h3>
+
+                    <div class="md-chips">
+                        <span ng-repeat="tag in detailsCtrl.item.tags">
+                            <md-chip class="md-chip" ng-click="detailsCtrl.search(tag)">
+                                <div class="md-chip-content">{{tag}}</div>
+                            </md-chip>
+                        </span>
+                    </div>
+
+                </md-content>
+            </div>
+
+        </md-content>
+
+    </md-content>
+
+    <md-list>
+      <md-item ng-repeat="action in detailsCtrl.actions">
+        <md-button ng-click="detailsCtrl.submitContact(action)" id="action_{{$index}}">
+            <md-icon md-svg-icon="{{ action.icon_url }}"></md-icon>
+            {{action.name}}
+        </md-button>
+      </md-item>
+    </md-list>
+
+</md-bottom-sheet>
