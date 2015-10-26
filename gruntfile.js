@@ -9,52 +9,36 @@ module.exports = function(grunt) {
             ' * <%= pkg.author %> | <%= pkg.contact %>\n' +
             ' */\n',
 
-    filename: 'flickr-viewr',
+    filename: '<%= pkg.name %>',
+
+    dependencyName: 'angular-package',
 
     s: 'src/',  // The source directory
     d: 'app/',  // The distributable directory, where built files will end up
     t: 'test/', // The test directory, for unit test files/specs
 
-    /**
-     * Concatenation setup. Concatenated files are built to the path defined by the d variable
-     */
-    concat: {
-      dist: {
-        src: [
-          '<%=s%>src/flickrItems/FlickrItems.js',
-          '<%=s%>src/flickrItems/FlickrItemController.js',
-          '<%=s%>src/flickrItems/FlickrItemService.js'
-        ],
-        dest: '<%= d %><%= filename %>.js'
-      }
-    },
+    angularFiles: [
+      '<%=s%>bower_components/angular/angular.js',
+      '<%=s%>bower_components/angular-animate/angular-animate.js',
+      '<%=s%>bower_components/angular-aria/angular-aria.js',
+      '<%=s%>bower_components/angular-material/angular-material.js',
+      '<%=s%>bower_components/angular-sanitize/angular-sanitize.js'
+    ],
 
-    /**
-     * Uglification (minification) setup. Uglified files are built to the path defined by the d variable and get a .min suffix
-     */
-    uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
-      dist: {
-        files: {
-          '<%= d %><%= filename %>.js': ['<%= concat.dist.dest %>'] // Each concatenated file will get an uglified version
-        }
-      }
-    },
+    appFiles: [
+      '<%=s%>flickrItems/FlickrItems.js',
+      '<%=s%>flickrItems/FlickrItemController.js',
+      '<%=s%>flickrItems/FlickrItemFilters.js',
+      '<%=s%>flickrItems/FlickrItemService.js'   
+    ],
 
     /**
      * Jasmine unit test setup. Includes Istanbul code coverage setup with Coveralls-friendly output
      */
     jasmine: {
-      src: '<%= concat.dist.src %>',
+      src: '<%= appFiles %>',
       options: {
-        vendor: [
-            '<%=s%>bower_components/angular/angular.js',
-            '<%=s%>bower_components/angular-animate/angular-animate.js',
-            '<%=s%>bower_components/angular-aria/angular-aria.js',
-            '<%=s%>bower_components/angular-material/angular-material.js',
-        ],    
+        vendor: '<%= angularFiles %>',    
         specs: '<%=t%>**/*.js',
         template: require('grunt-template-jasmine-istanbul'),
         templateOptions: {
@@ -97,7 +81,7 @@ module.exports = function(grunt) {
             paths: ['<%= s %>less/**/*.less'], // Process all Less files in Less folder
         },
         files: {
-          "<%= s %>assets/app.css": "<%= s %>less/_styles.less" // Build app.css based on _styles.less
+          "<%= s %>assets/app.min.css": "<%= s %>less/_styles.less" // Build app.css based on _styles.less
         }
       } 
     },
@@ -118,22 +102,104 @@ module.exports = function(grunt) {
         force: true
       },
       src: 'coverage/lcov.info'
+    },
+
+    /**
+     * Copy setup
+     */
+    copy: {
+      angular: {
+        files: [
+          // Angular JS files
+          {
+            flatten: true,
+            expand: true,
+            cwd: '<%= s %>bower_components',
+            src: '*/*.min.js',
+            dest: '<%= d %>js',
+            filter: 'isFile'
+          },
+          // Angular Material CSS file
+          {
+            src: '<%= s %>bower_components/angular-material/angular-material.min.css',
+            dest: '<%= d %>css/angular-material.min.css',
+            filter: 'isFile'
+          }
+        ]
+      },
+      app: {
+        files: [
+          // App JS files
+          {
+            flatten: true,
+            expand: true,
+            cwd: '<%= s %>src/flickrItems',
+            src: '*.js',
+            dest: '<%= d %>js/flickrItems',
+            filter: 'isFile'
+          },
+          // App view files
+          {
+            expand: true,
+            cwd: '<%= s %>src/flickrItems/view',
+            src: '*.html',
+            dest: '<%= d %>js/flickrItems/view',
+            filter: 'isFile'
+          },
+          // App CSS file (from Less output)
+          {
+            expand: true,
+            cwd: '<%= s %>assets',
+            src: '*.min.css',  
+            dest: '<%= d %>css',
+            filter: 'isFile'
+          }
+        ]
+      },
+      // SVG assets
+      svg: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= s %>assets/svg',
+            src: '**/*',  
+            dest: '<%= d %>svg',
+            filter: 'isFile'
+          }
+        ]
+      }
+    },
+
+    /**
+     * Process HTML step. Replaces sections of index.html to create a production copy
+     */
+    processhtml: {
+      options: {
+        data: {
+          message: 'Hello world!'
+        }
+      },
+      build: {
+        files: {
+          'index.html': ['<%= s %>index.html'] // Create index.html in root to enable easy publication to GitHub Pages
+        }
+      }
     }
 
   });
 
   // Load tasks in this order
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-coveralls');
+  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-processhtml');
 
   // Register test and build tasks.These can be run from the command line with "grunt test" or "grunt build"
   // "grunt watch" should be run while developing to notify you when things go wrong
   grunt.registerTask('test', ['jshint', 'jasmine', 'coveralls']);
-  grunt.registerTask('build', ['jshint', 'jasmine', 'concat', 'uglify']);
+  grunt.registerTask('build', ['jshint', 'jasmine', 'copy', 'processhtml']);
 
 };
