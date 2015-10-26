@@ -9,37 +9,43 @@ module.exports = function(grunt) {
             ' * <%= pkg.author %> | <%= pkg.contact %>\n' +
             ' */\n',
 
-    filename: 'flickr-viewr',
+    filename: '<%= pkg.name %>',
+
+    dependencyName: 'angular-package',
 
     s: 'src/',  // The source directory
     d: 'app/',  // The distributable directory, where built files will end up
     t: 'test/', // The test directory, for unit test files/specs
 
-    /**
-     * Concatenation setup. Concatenated files are built to the path defined by the d variable
-     */
-    concat: {
-      dist: {
-        src: [
-          '<%=s%>src/flickrItems/FlickrItems.js',
-          '<%=s%>src/flickrItems/FlickrItemController.js',
-          '<%=s%>src/flickrItems/FlickrItemService.js'
-        ],
-        dest: '<%= d %><%= filename %>.js'
-      }
-    },
+    angularFiles: [
+      '<%=s%>bower_components/angular/angular.js',
+      '<%=s%>bower_components/angular-animate/angular-animate.js',
+      '<%=s%>bower_components/angular-aria/angular-aria.js',
+      '<%=s%>bower_components/angular-material/angular-material.js'
+    ],
+
+    appFiles: [
+      '<%=s%>src/flickrItems/FlickrItems.js',
+      '<%=s%>src/flickrItems/FlickrItemController.js',
+      '<%=s%>src/flickrItems/FlickrItemService.js'
+    ],
 
     /**
      * Uglification (minification) setup. Uglified files are built to the path defined by the d variable and get a .min suffix
      */
     uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
-      dist: {
+      dependencies: {
         files: {
-          '<%= d %><%= filename %>.js': ['<%= concat.dist.dest %>'] // Each concatenated file will get an uglified version
+          '<%= d %>js/<%= dependencyName %>.min.js': '<%= angularFiles %>'
         }
+      },
+      app: {
+        options: {
+          banner: '<%= banner %>'
+        },
+        files: {
+          '<%= d %>js/<%= filename %>.min.js': '<%= appFiles %>'
+        }   
       }
     },
 
@@ -47,14 +53,14 @@ module.exports = function(grunt) {
      * Jasmine unit test setup. Includes Istanbul code coverage setup with Coveralls-friendly output
      */
     jasmine: {
-      src: '<%= concat.dist.src %>',
+      src: '<%= uglify.app.files %>',
       options: {
         vendor: [
             '<%=s%>bower_components/angular/angular.js',
             '<%=s%>bower_components/angular-animate/angular-animate.js',
             '<%=s%>bower_components/angular-aria/angular-aria.js',
             '<%=s%>bower_components/angular-material/angular-material.js',
-        ],    
+          ],    
         specs: '<%=t%>**/*.js',
         template: require('grunt-template-jasmine-istanbul'),
         templateOptions: {
@@ -118,22 +124,50 @@ module.exports = function(grunt) {
         force: true
       },
       src: 'coverage/lcov.info'
-    }
+    },
+
+    /**
+     * Copy setup
+     */
+    copy: {
+      svg: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= s %>assets/svg',
+            src: '**/*',  
+            dest: '<%= d %>svg',
+            filter: 'isFile'
+          }
+        ]
+      },
+      css: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= s %>assets',
+            src: '*.css',  
+            dest: '<%= d %>css',
+            filter: 'isFile'
+          }
+        ]
+      }
+    },
 
   });
 
   // Load tasks in this order
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-coveralls');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
   // Register test and build tasks.These can be run from the command line with "grunt test" or "grunt build"
   // "grunt watch" should be run while developing to notify you when things go wrong
   grunt.registerTask('test', ['jshint', 'jasmine', 'coveralls']);
-  grunt.registerTask('build', ['jshint', 'jasmine', 'concat', 'uglify']);
+  grunt.registerTask('build', ['jshint', 'jasmine', 'copy', 'uglify']);
 
 };
