@@ -86,13 +86,21 @@ module.exports = function(grunt) {
     less: {
       dev: {
         options: {
-            paths: ['<%= s %>less/**/*.less'], // Process all Less files in Less folder
+            paths: ['<%= s %>less/**/*.less'] // Process all Less files in Less folder
         },
         files: {
           "<%= s %>assets/app.css": "<%= s %>less/_styles.less",    // Build app.css based on _styles.less
-          "<%= s %>assets/app.min.css": "<%= s %>less/_styles.less" // Also create .min version for build
         }
-      } 
+      },
+      build: {
+        options: {
+            paths: ['<%= s %>less/**/*.less'], // Process all Less files in Less folder
+            compress: true
+        },
+        files: {
+          "<%= d %>css/app.min.css": "<%= s %>less/_styles.less" // Build app.min.css version for build
+        }
+      }
     },
 
     /**
@@ -153,14 +161,6 @@ module.exports = function(grunt) {
             cwd: '<%= s %>app/js/flickrItems/view',
             src: '*.html',
             dest: '<%= d %>js/flickrItems/view',
-            filter: 'isFile'
-          },
-          // App CSS file (from Less output)
-          {
-            expand: true,
-            cwd: '<%= s %>assets',
-            src: '*.min.css',  
-            dest: '<%= d %>css',
             filter: 'isFile'
           }
         ]
