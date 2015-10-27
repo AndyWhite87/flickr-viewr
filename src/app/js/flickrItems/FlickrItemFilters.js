@@ -91,6 +91,11 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing published properties
+        if (typeof item.published !== 'string') {
+          return item;
+        }
+
         var published = new Date(item.published);
 
         if (typeof published.getMilliseconds === 'function') {
