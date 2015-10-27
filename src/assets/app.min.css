@@ -159,6 +159,16 @@ md-toolbar h1 {
 #tags-search-container input {
   color: #fff;
 }
+@media (max-width: 600px) {
+  #tags-search-container input {
+    height: 3em;
+    line-height: 3.5em;
+  }
+}
+#tags-search-container button {
+  min-width: 3em;
+  margin-right: 0;
+}
 /* Override styles for small screens */
 @media (max-width: 600px) {
   .md-display-3 {
