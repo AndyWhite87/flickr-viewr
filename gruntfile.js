@@ -89,7 +89,8 @@ module.exports = function(grunt) {
             paths: ['<%= s %>less/**/*.less'], // Process all Less files in Less folder
         },
         files: {
-          "<%= s %>assets/app.min.css": "<%= s %>less/_styles.less" // Build app.css based on _styles.less
+          "<%= s %>assets/app.css": "<%= s %>less/_styles.less",    // Build app.css based on _styles.less
+          "<%= s %>assets/app.min.css": "<%= s %>less/_styles.less" // Also create .min version for build
         }
       } 
     },
