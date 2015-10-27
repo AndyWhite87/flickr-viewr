@@ -119,6 +119,11 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing description properties
+        if (typeof item.description !== 'string') {
+          return item;
+        }
+
         // Split the description at the start of each p tag, and keep only the last
         var descriptionParts = item.description.split('<p>');
         var description = descriptionParts[descriptionParts.length - 1];
