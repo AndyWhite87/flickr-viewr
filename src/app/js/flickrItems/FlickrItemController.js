@@ -17,6 +17,7 @@
   function FlickrItemController(itemService, $mdBottomSheet, $mdToast, $log, $http, $q) {
     var self = this;
     self.selected         = null;
+    self.searched         = false;
     self.tags             = 'potato'; // Default tag(s) to search for
     self.items            = [ ];
     self.showItemDetails  = showItemDetails;
@@ -37,6 +38,7 @@
       itemService
         .loadAllItems(self.tags)
         .then( function( items ) {
+          self.searched = true;
           self.items    = [].concat(items);
         });
     }

@@ -40,7 +40,7 @@
 
     <md-content flex id="content">
 
-      <md-list>
+      <md-list ng-if="ctrl.items.length > 0">
 
         <md-list-item ng-repeat="item in ctrl.items">
               
@@ -88,6 +88,25 @@
         </md-list-item>
 
       </md-list>
+
+      <div ng-if="!ctrl.searched" class="app-loading">
+        <p class="md-headline">
+          Loading...
+        </p>
+
+      </div> 
+
+      <div ng-if="ctrl.searched && ctrl.items.length <= 0" class="no-results">
+
+        <p class="md-headline">
+          No photos were found matching those tags :(
+        </p>
+
+        <p class="md-headline">
+          Please search again.
+        </p>
+
+      </div>
 
     </md-content>
 

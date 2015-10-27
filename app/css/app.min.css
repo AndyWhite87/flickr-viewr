@@ -1,3 +1,4 @@
+/* Base document styling */
 html,
 body {
   font-family: 'Roboto', sans-serif;
@@ -8,7 +9,9 @@ body {
   overflow: hidden;
 }
 /* Variables */
+/* Import other less files */
 /* Core content styles */
+/* Prevent white background in md-content areas */
 md-content.md-default-theme,
 md-content,
 .md-subheader.md-default-theme,
@@ -16,22 +19,17 @@ md-content,
   color: rgba(0, 0, 0, 0.87);
   background-color: transparent;
 }
-#content .md-button.contact {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 40px;
+#content {
+  /* Item list and photos */
+  /* Item list headers */
+  /* Placeholder content for loading and error states */
 }
 #content md-list-item {
   padding: 0;
 }
 #content md-list-item .photo-wrap {
   cursor: pointer;
-  border: 2px solid #e0e0e0;
+  border: 0.3em solid #e0e0e0;
   border-radius: 50%;
   background-size: cover;
   background-position: center;
@@ -53,9 +51,6 @@ md-content,
 }
 #content md-list-item:nth-child(even) .photo-wrap {
   border-color: #ffffff;
-}
-#content md-icon.avatar {
-  margin-top: 10px;
 }
 #content .md-subheader h1 {
   margin-top: 1.25em;
@@ -86,30 +81,22 @@ md-content,
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-#content .md-button.contact > md-icon {
-  fill: black;
-  width: 36px;
-  height: 36px;
+#content .app-loading,
+#content .no-results {
+  padding: 1em;
+  margin-top: 5em;
 }
-#content md-button.menuBtn > md-icon {
-  fill: white;
-  width: 24px;
-  height: 24px;
+@media (max-width: 600px) {
+  #content .app-loading,
+  #content .no-results {
+    margin-top: 25%;
+  }
 }
-#content .md-button.contact:active > md-icon {
-  background-color: #dadada;
-  border-radius: 75%;
-  padding: 4px;
-  transition: all 100ms ease-out 30ms;
-}
-#content img {
-  display: block;
-  height: auto;
-  width: 33%;
-  max-width: 500px;
-}
-#content .content-wrapper {
-  position: relative;
+#content .app-loading,
+#content .no-results,
+#content .app-loading p,
+#content .no-results p {
+  text-align: center;
 }
 /* Image details area */
 md-bottom-sheet {
@@ -143,6 +130,10 @@ md-toolbar h1 {
   font-size: 1.250em;
   font-weight: 400;
   text-align: center;
+  max-height: 1.25em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   padding-left: 88px;
 }
 @media (max-width: 600px) {
