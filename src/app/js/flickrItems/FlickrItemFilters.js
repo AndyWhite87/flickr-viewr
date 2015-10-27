@@ -8,6 +8,11 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing media proprties
+        if (typeof item.media !== 'object' || typeof item.media.m !== 'string') {
+          return item;
+        }
+
         // Get the last six characters from the media.m property for comparison
         var media = item.media.m;
         var fileEnding = media.slice(-6);
@@ -16,6 +21,9 @@
         if (fileEnding === '_m.jpg') {
           var src = media.substring(0, media.length - 6) + media.slice(-4);
           item.src = src;
+        }
+        else {
+          item.src = item.media.m;
         }
 
         return item;
