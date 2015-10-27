@@ -8,7 +8,7 @@
 
       return function(item) {
 
-        // Do not process items with malformed or missing media proprties
+        // Do not process items with malformed or missing media properties
         if (typeof item.media !== 'object' || typeof item.media.m !== 'string') {
           return item;
         }
@@ -36,6 +36,11 @@
     .filter('itemAuthor', function() {
 
       return function(item) {
+
+        // Do not process items with malformed or missing author properties
+        if (typeof item.author !== 'string') {
+          return item;
+        }
 
         // Get the start of the item's author, based on the length of the prefix we're looking for
         var authorPrefix = 'nobody@flickr.com (';
