@@ -2,15 +2,19 @@
 
   <md-content flex>
 
-    <md-input-container flex id="tags-search-container">
+    <md-input-container flex layout="row" id="tags-search-container">
 
-      <input id="tags-search-input"
-             aria-label="Search for tags"
+      <input flex
+             flex-order="1"
              type="text"
+             id="tags-search-input"
+             aria-label="Search for tags"
              ng-model="tagSearchCtrl.tags"
              ng-model-options="{ debounce: 300 }"
              ng-change="tagSearchCtrl.search()"
-             ng-blur="tagSearchCtrl.close()">
+             ng-blur="tagSearchCtrl.close">
+
+      <md-button flex="none" flex-order="2" hide show-sm aria-label="Close search bar" ng-click="tagSearchCtrl.close()">x</md-button>
 
     </md-input-container>
 

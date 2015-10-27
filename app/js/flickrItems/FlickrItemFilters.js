@@ -8,6 +8,14 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing media properties
+        if (typeof item.media !== 'object' || typeof item.media.m !== 'string') {
+          item.media = {};
+          item.media.m = "";
+          item.src = "";
+          return item;
+        }
+
         // Get the last six characters from the media.m property for comparison
         var media = item.media.m;
         var fileEnding = media.slice(-6);
@@ -16,6 +24,9 @@
         if (fileEnding === '_m.jpg') {
           var src = media.substring(0, media.length - 6) + media.slice(-4);
           item.src = src;
+        }
+        else {
+          item.src = item.media.m;
         }
 
         return item;
@@ -28,6 +39,12 @@
     .filter('itemAuthor', function() {
 
       return function(item) {
+
+        // Do not process items with malformed or missing author properties
+        if (typeof item.author !== 'string') {
+          item.author = "unknown";
+          return item;
+        }
 
         // Get the start of the item's author, based on the length of the prefix we're looking for
         var authorPrefix = 'nobody@flickr.com (';
@@ -50,15 +67,25 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing link properties
+        if (typeof item.link !== 'string') {
+          item.authorLink = "#";
+          return item;
+        }
+
         var authorLink = item.link;
 
         // Remove the last slug from the URL
         if (item.link.slice(-1) === "/") {
           authorLink = authorLink.substring(0, authorLink.length - 1);
           authorLink = authorLink.substr(0, authorLink.lastIndexOf("/"));
-        }
+          authorLink += '/';
 
-        item.authorLink = authorLink;
+          item.authorLink = authorLink;
+        }
+        else {
+          item.authorLink = '#';
+        }
 
         return item;
 
@@ -71,6 +98,12 @@
     .filter('itemPublished', function($filter) {
 
       return function(item) {
+
+        // Do not process items with malformed or missing published properties
+        if (typeof item.published !== 'string') {
+          item.published = "unknown";
+          return item;
+        }
 
         var published = new Date(item.published);
 
@@ -94,6 +127,12 @@
     .filter('itemDescription', function() {
 
       return function(item) {
+
+        // Do not process items with malformed or missing description properties
+        if (typeof item.description !== 'string') {
+          item.description = [];
+          return item;
+        }
 
         // Split the description at the start of each p tag, and keep only the last
         var descriptionParts = item.description.split('<p>');
@@ -135,6 +174,12 @@
     .filter('itemTags', function() {
 
       return function(item) {
+
+        // Do not process items with malformed or missing tags properties
+        if (typeof item.tags !== 'string') {
+          item.tags = [];
+          return item;
+        }
 
         // Split the item's tag on each space character to create an array
         if (typeof item.tags === 'string') {
