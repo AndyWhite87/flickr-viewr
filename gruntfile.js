@@ -58,11 +58,10 @@ module.exports = function(grunt) {
             { type: 'text-summary' }                            // Output results to console post-build
           ],
           thresholds: {
-            // Test result thresholds all set to 0 to begin with. Commented values are suggestions
-            lines: 0, // 75
-            statements: 0, // 75
-            branches: 0, // 75
-            functions: 0 // 75
+            statements: 70,
+            branches: 70,
+            functions: 50,
+            lines: 70
           }
         }
       }
