@@ -48,7 +48,7 @@ module.exports = function(grunt) {
       src: '<%= appFiles %>',
       options: {
         vendor: '<%= angularFilesForTests %>',    
-        specs: '<%=t%>**/*.js',
+        specs: ['<%=t%>test-helpers.js', '<%=t%>**/*.js'],
         template: require('grunt-template-jasmine-istanbul'),
         templateOptions: {
           coverage: 'coverage/coverage.json',
