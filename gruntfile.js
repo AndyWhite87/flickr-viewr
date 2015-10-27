@@ -25,6 +25,15 @@ module.exports = function(grunt) {
       '<%=s%>bower_components/angular-sanitize/angular-sanitize.js'
     ],
 
+    angularFilesForTests: [
+      '<%=s%>bower_components/angular/angular.js',
+      '<%=s%>bower_components/angular-animate/angular-animate.js',
+      '<%=s%>bower_components/angular-aria/angular-aria.js',
+      '<%=s%>bower_components/angular-material/angular-material.js',
+      '<%=s%>bower_components/angular-sanitize/angular-sanitize.js',
+      '<%=s%>bower_components/angular-mocks/angular-mocks.js'
+    ],
+
     appFiles: [
       '<%=s%>app/js/flickrItems/FlickrItems.js',
       '<%=s%>app/js/flickrItems/FlickrItemController.js',
@@ -38,7 +47,7 @@ module.exports = function(grunt) {
     jasmine: {
       src: '<%= appFiles %>',
       options: {
-        vendor: '<%= angularFiles %>',    
+        vendor: '<%= angularFilesForTests %>',    
         specs: '<%=t%>**/*.js',
         template: require('grunt-template-jasmine-istanbul'),
         templateOptions: {
