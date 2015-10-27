@@ -26,10 +26,10 @@ module.exports = function(grunt) {
     ],
 
     appFiles: [
-      '<%=s%>flickrItems/FlickrItems.js',
-      '<%=s%>flickrItems/FlickrItemController.js',
-      '<%=s%>flickrItems/FlickrItemFilters.js',
-      '<%=s%>flickrItems/FlickrItemService.js'   
+      '<%=s%>app/js/flickrItems/FlickrItems.js',
+      '<%=s%>app/js/flickrItems/FlickrItemController.js',
+      '<%=s%>app/js/flickrItems/FlickrItemFilters.js',
+      '<%=s%>app/js/flickrItems/FlickrItemService.js'   
     ],
 
     /**
@@ -133,7 +133,7 @@ module.exports = function(grunt) {
           {
             flatten: true,
             expand: true,
-            cwd: '<%= s %>src/flickrItems',
+            cwd: '<%= s %>app/js/flickrItems',
             src: '*.js',
             dest: '<%= d %>js/flickrItems',
             filter: 'isFile'
@@ -141,7 +141,7 @@ module.exports = function(grunt) {
           // App view files
           {
             expand: true,
-            cwd: '<%= s %>src/flickrItems/view',
+            cwd: '<%= s %>app/js/flickrItems/view',
             src: '*.html',
             dest: '<%= d %>js/flickrItems/view',
             filter: 'isFile'
@@ -200,6 +200,6 @@ module.exports = function(grunt) {
   // Register test and build tasks.These can be run from the command line with "grunt test" or "grunt build"
   // "grunt watch" should be run while developing to notify you when things go wrong
   grunt.registerTask('test', ['jshint', 'jasmine', 'coveralls']);
-  grunt.registerTask('build', ['jshint', 'jasmine', 'copy', 'processhtml']);
+  grunt.registerTask('build', ['copy', 'processhtml', 'jshint', 'jasmine', 'coveralls']);
 
 };

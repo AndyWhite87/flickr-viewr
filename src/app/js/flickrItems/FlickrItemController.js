@@ -51,7 +51,7 @@
 
         return $mdBottomSheet.show({
           parent: angular.element(document.body),
-          templateUrl: './flickrItems/view/detailsSheet.html',
+          templateUrl: './app/js/flickrItems/view/detailsSheet.html',
           controller: [ '$mdBottomSheet', DetailsPanelController],
           controllerAs: "detailsCtrl",
           bindToController : true,
@@ -99,7 +99,7 @@
 
       $mdToast.show({
         parent : angular.element(document.querySelector('#toolbar')),
-        templateUrl: './flickrItems/view/tagsSearch.html',
+        templateUrl: './app/js/flickrItems/view/tagsSearch.html',
         controller: [ '$mdToast', TagsSearchController],
         controllerAs: "tagSearchCtrl",
         position: 'top right',

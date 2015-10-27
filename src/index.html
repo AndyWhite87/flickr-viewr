@@ -34,16 +34,16 @@
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
     <md-toolbar layout="row" class="md-whiteframe-z1" id="toolbar">
-
-      <!-- build:remove -->
-      <h1 flex>Flickr Viewr [Dev]</h1>
-      <!-- /build -->
-
-      <!-- build:template
-      <h1 flex>Flickr Viewr</h1>
-      /build -->
+      
+      <h1 flex>
+        <!-- build:remove -->
+        [Dev]
+        <!-- /build -->
+        Flickr Viewr
+      </h1>
 
       <md-button flex="none" class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
+
     </md-toolbar>
 
     <md-content flex id="content">
@@ -107,11 +107,6 @@
     <script src="./bower_components/angular-aria/angular-aria.js"></script>
     <script src="./bower_components/angular-material/angular-material.js"></script>
     <script src="./bower_components/angular-sanitize/angular-sanitize.js"></script>
-
-    <script src="./flickrItems/FlickrItems.js"></script>
-    <script src="./flickrItems/FlickrItemController.js"></script>
-    <script src="./flickrItems/FlickrItemFilters.js"></script>
-    <script src="./flickrItems/FlickrItemService.js"></script>
     <!-- /build -->
 
     <!-- build:template
@@ -120,12 +115,12 @@
     <script src="app/js/angular-aria.min.js"></script>
     <script src="app/js/angular-material.min.js"></script>
     <script src="app/js/angular-sanitize.min.js"></script>
-
-    <script src="app/js/flickrItems/FlickrItems.js"></script>
-    <script src="app/js/flickrItems/FlickrItemController.js"></script>
-    <script src="app/js/flickrItems/FlickrItemFilters.js"></script>
-    <script src="app/js/flickrItems/FlickrItemService.js"></script>
     /build -->
+
+    <script src="./app/js/flickrItems/FlickrItems.js"></script>
+    <script src="./app/js/flickrItems/FlickrItemController.js"></script>
+    <script src="./app/js/flickrItems/FlickrItemFilters.js"></script>
+    <script src="./app/js/flickrItems/FlickrItemService.js"></script>
 
     <script type="text/javascript">
 
