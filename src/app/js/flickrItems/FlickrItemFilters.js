@@ -63,15 +63,21 @@
 
       return function(item) {
 
+        // Do not process items with malformed or missing link properties
+        if (typeof item.link !== 'string') {
+          return item;
+        }
+
         var authorLink = item.link;
 
         // Remove the last slug from the URL
         if (item.link.slice(-1) === "/") {
           authorLink = authorLink.substring(0, authorLink.length - 1);
           authorLink = authorLink.substr(0, authorLink.lastIndexOf("/"));
-        }
+          authorLink += '/';
 
-        item.authorLink = authorLink;
+          item.authorLink = authorLink;
+        }
 
         return item;
 
