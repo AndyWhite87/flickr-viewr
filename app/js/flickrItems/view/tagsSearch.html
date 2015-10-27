@@ -12,7 +12,7 @@
              ng-model="tagSearchCtrl.tags"
              ng-model-options="{ debounce: 300 }"
              ng-change="tagSearchCtrl.search()"
-             ng-blur="tagSearchCtrl.close">
+             ng-blur="tagSearchCtrl.close()">
 
       <md-button flex="none" flex-order="2" hide show-sm aria-label="Close search bar" ng-click="tagSearchCtrl.close()">x</md-button>
 

@@ -107,8 +107,8 @@
       });
 
       setTimeout(function(){
-        document.querySelector('#tags-search-input').focus();
-      }, 0);
+        document.querySelector('#tags-search-input').select();
+      }, 300);
 
       /**
        * Controller for tags search area
