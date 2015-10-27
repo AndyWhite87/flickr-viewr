@@ -37,15 +37,15 @@ describe('itemAuthorFilter', function() {
 
   });
 
-  it('returns the item unchanged if its author property is not present', function() {
+  it('adds default author property to item if author property is not present', function() {
 
     var item = new TestItem();
     delete item.author;
 
     var filteredItem = $filter('itemAuthor')(item);
 
-    expect(filteredItem.author).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.author).toBeDefined();
+    expect(filteredItem.author).toEqual("unknown");
 
   });
 

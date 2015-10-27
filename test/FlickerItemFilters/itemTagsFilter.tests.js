@@ -40,15 +40,15 @@ describe('itemTagsFilter', function() {
 
   });
 
-  it('returns the item unchanged if its tags property is not present', function() {
+  it('adds empty tags array to an item if its tags property is not present', function() {
 
     var item = new TestItem();
     delete item.tags;
 
     var filteredItem = $filter('itemTags')(item);
 
-    expect(filteredItem.tags).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.tags).toBeDefined();
+    expect(filteredItem.tags).toEqual([]);
 
   });
 

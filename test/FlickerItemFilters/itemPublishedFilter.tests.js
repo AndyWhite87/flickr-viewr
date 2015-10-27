@@ -36,15 +36,15 @@ describe('itemPublishedFilter', function() {
 
   });
 
-  it('returns an item unchanged if its published property is not present', function() {
+  it('adds default published string to an item if its published property is not present', function() {
 
     var item = new TestItem();
     delete item.published;
 
     var filteredItem = $filter('itemPublished')(item);
 
-    expect(filteredItem.published).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.published).toBeDefined();
+    expect(filteredItem.published).toEqual('unknown');
 
   });
 

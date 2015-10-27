@@ -43,15 +43,15 @@ describe('itemDescriptionFilter', function() {
 
   });
 
-  it('returns the item unchanged if its description property is not present', function() {
+  it('adds empty description to an item if its description property is not present', function() {
 
     var item = new TestItem();
     delete item.description;
 
     var filteredItem = $filter('itemDescription')(item);
 
-    expect(filteredItem.description).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.description).toBeDefined();
+    expect(filteredItem.description).toEqual([]);
 
   });
 

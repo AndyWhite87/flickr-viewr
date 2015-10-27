@@ -24,25 +24,25 @@ describe('itemAuthorLinkFilter', function() {
 
   });
 
-  it('returns the item unchanged if its link property is not as expected', function() {
+  it('adds default authorLink to items with unexpected link properties', function() {
 
     var item = new TestItem();
     item.link = item.link.substring(0, item.link.length - 1);
 
     var filteredItem = $filter('itemAuthorLink')(item);
-    expect(filteredItem.authorLink).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.authorLink).toBeDefined();
+    expect(filteredItem.authorLink).toEqual('#');
 
   });
 
-  it('returns the item unchanged if its link property is not present', function() {
+  it('adds default authorLink to items with no link property', function() {
 
     var item = new TestItem();
     delete item.link;
     
     var filteredItem = $filter('itemAuthorLink')(item);
-    expect(filteredItem.authorLink).not.toBeDefined();
-    expect(filteredItem).toEqual(item);
+    expect(filteredItem.authorLink).toBeDefined();
+    expect(filteredItem.authorLink).toEqual('#');
 
   });
 

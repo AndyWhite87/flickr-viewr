@@ -10,6 +10,9 @@
 
         // Do not process items with malformed or missing media properties
         if (typeof item.media !== 'object' || typeof item.media.m !== 'string') {
+          item.media = {};
+          item.media.m = "";
+          item.src = "";
           return item;
         }
 
@@ -39,6 +42,7 @@
 
         // Do not process items with malformed or missing author properties
         if (typeof item.author !== 'string') {
+          item.author = "unknown";
           return item;
         }
 
@@ -65,6 +69,7 @@
 
         // Do not process items with malformed or missing link properties
         if (typeof item.link !== 'string') {
+          item.authorLink = "#";
           return item;
         }
 
@@ -77,6 +82,9 @@
           authorLink += '/';
 
           item.authorLink = authorLink;
+        }
+        else {
+          item.authorLink = '#';
         }
 
         return item;
@@ -93,6 +101,7 @@
 
         // Do not process items with malformed or missing published properties
         if (typeof item.published !== 'string') {
+          item.published = "unknown";
           return item;
         }
 
@@ -121,6 +130,7 @@
 
         // Do not process items with malformed or missing description properties
         if (typeof item.description !== 'string') {
+          item.description = [];
           return item;
         }
 
@@ -164,6 +174,12 @@
     .filter('itemTags', function() {
 
       return function(item) {
+
+        // Do not process items with malformed or missing tags properties
+        if (typeof item.tags !== 'string') {
+          item.tags = [];
+          return item;
+        }
 
         // Split the item's tag on each space character to create an array
         if (typeof item.tags === 'string') {

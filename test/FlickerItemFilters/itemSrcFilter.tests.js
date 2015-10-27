@@ -48,7 +48,7 @@ describe('itemSrcFilter', function() {
 
   });
 
-  it('returns the item unchanged if its media properties are not present', function() {
+  it('adds default properties to item if its media properties are not present', function() {
 
     var item1 = new TestItem();
     delete item1.media;
@@ -57,12 +57,18 @@ describe('itemSrcFilter', function() {
     delete item2.media.m;
 
     var filteredItem1 = $filter('itemSrc')(item1);
-    expect(filteredItem1.src).not.toBeDefined();
-    expect(filteredItem1).toEqual(item1);
+    expect(filteredItem1.src).toBeDefined();
+    expect(filteredItem1.media).toBeDefined();
+    expect(filteredItem1.media.m).toBeDefined();
+    expect(filteredItem1.media.m).toEqual('');
+    expect(filteredItem1.src).toEqual('');
 
     var filteredItem2 = $filter('itemSrc')(item2);
-    expect(filteredItem2.src).not.toBeDefined();
-    expect(filteredItem2).toEqual(item2);
+    expect(filteredItem2.src).toBeDefined();
+    expect(filteredItem2.media).toBeDefined();
+    expect(filteredItem2.media.m).toBeDefined();
+    expect(filteredItem2.media.m).toEqual('');
+    expect(filteredItem2.src).toEqual('');
 
   });
 
