@@ -17,6 +17,9 @@ describe('FlickrItemController', function() {
     expect(controller.selected).toBeDefined();
     expect(controller.selected).toEqual(null);
 
+    expect(controller.searched).toBeDefined();
+    expect(controller.searched).toEqual(false);
+
     expect(controller.tags).toBeDefined();
     expect(controller.tags).toEqual('potato'); // Default tag
 
