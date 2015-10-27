@@ -83,7 +83,8 @@
           this.search = function(tag) {
             self.tags = tag;
             self.searchTags();
-            setTimeout(this.close, 300);
+            this.close();
+            document.querySelector("#content").scrollTop = 0;
           };
 
           this.close = function() {
