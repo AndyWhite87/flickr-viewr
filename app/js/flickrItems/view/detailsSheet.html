@@ -3,18 +3,23 @@
     <md-content flex layout="row">
 
         <md-subheader flex>
-            <h1 class="md-display-1">
-                <a href="{{detailsCtrl.item.link}}" target="flickrViewr-Flickr">{{ detailsCtrl.item.title }}</a>
+            <h1 class="md-display-1 details-header">
+                <a href="{{ detailsCtrl.item.link }}" title="{{ detailsCtrl.item.title }}"  target="flickrViewr-Flickr">
+                    {{ detailsCtrl.item.title }}
+                </a>
             </h1>
 
             <h2 class="md-subhead">
-                <a href="{{detailsCtrl.item.authorLink}}" target="flickrViewr-Flickr">{{detailsCtrl.item.author}}</a>
-                | Published: {{detailsCtrl.item.published}}
+                <a href="{{ detailsCtrl.item.authorLink }}" title="{{ detailsCtrl.item.author }}" target="flickrViewr-Flickr">
+                    {{ detailsCtrl.item.author }}
+                </a>
+
+                | Published: {{ detailsCtrl.item.published }}
             </h2>
         </md-subheader>
 
         <div flex="none">
-            <md-button class="md-primary" ng-click="detailsCtrl.close()">
+            <md-button class="md-primary details-close-button" ng-click="detailsCtrl.close()">
                 Back
             </md-button>
         </div>
@@ -39,8 +44,8 @@
 
                     <div class="md-chips">
                         <span ng-repeat="tag in detailsCtrl.item.tags">
-                            <md-chip class="md-chip" ng-click="detailsCtrl.search(tag)">
-                                <div class="md-chip-content">{{tag}}</div>
+                            <md-chip class="md-chip" title="Search for images tagged '{{ tag }}'" ng-click="detailsCtrl.search(tag)">
+                                <div class="md-chip-content">{{ tag }}</div>
                             </md-chip>
                         </span>
                     </div>
