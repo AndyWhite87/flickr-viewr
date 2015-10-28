@@ -38,7 +38,13 @@ md-content,
   width: 20em;
   height: 20em;
 }
-@media (max-width: 600px) {
+@media (max-width: 1200px) {
+  #content md-list-item .photo-wrap {
+    width: 12em;
+    height: 12em;
+  }
+}
+@media (max-width: 800px) {
   #content md-list-item .photo-wrap {
     margin: 1em;
     margin-right: 0;
@@ -55,7 +61,7 @@ md-content,
 #content .md-subheader h1 {
   margin-top: 1.25em;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   #content .md-subheader h1 {
     margin-top: 0;
   }
@@ -81,12 +87,17 @@ md-content,
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+@media (max-width: 1200px) {
+  #content .md-subheader h2 {
+    font-size: 1.3em;
+  }
+}
 #content .app-loading,
 #content .no-results {
   padding: 1em;
   margin-top: 5em;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   #content .app-loading,
   #content .no-results {
     margin-top: 25%;
@@ -120,7 +131,7 @@ span.name {
   padding-left: 5px;
 }
 /* Toolbar area */
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   md-toolbar {
     min-height: 48px !important;
   }
@@ -136,7 +147,7 @@ md-toolbar h1 {
   white-space: nowrap;
   padding-left: 88px;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   md-toolbar h1 {
     text-align: left;
     padding-left: 1em;
@@ -150,7 +161,7 @@ md-toolbar h1 {
 #tags-search-container input {
   color: #fff;
 }
-@media (max-width: 600px) {
+@media (max-width: 800px) {
   #tags-search-container input {
     height: 3em;
     line-height: 3.5em;
@@ -160,8 +171,14 @@ md-toolbar h1 {
   min-width: 3em;
   margin-right: 0;
 }
-/* Override styles for small screens */
-@media (max-width: 600px) {
+/* Override styles for smaller screens */
+@media (max-width: 1200px) {
+  .md-display-3 {
+    font-size: 36px;
+    line-height: 36px;
+  }
+}
+@media (max-width: 800px) {
   .md-display-3 {
     font-size: 24px;
     line-height: 30px;
