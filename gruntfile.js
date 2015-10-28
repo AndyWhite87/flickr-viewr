@@ -164,18 +164,6 @@ module.exports = function(grunt) {
             filter: 'isFile'
           }
         ]
-      },
-      // SVG assets
-      svg: {
-        files: [
-          {
-            expand: true,
-            cwd: '<%= s %>assets/svg',
-            src: '**/*',  
-            dest: '<%= d %>svg',
-            filter: 'isFile'
-          }
-        ]
       }
     },
 

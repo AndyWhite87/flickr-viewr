@@ -56,14 +56,5 @@
         </md-content>
 
     </md-content>
-
-    <md-list>
-      <md-item ng-repeat="action in detailsCtrl.actions">
-        <md-button ng-click="detailsCtrl.submitContact(action)" id="action_{{$index}}">
-            <md-icon md-svg-icon="{{ action.icon_url }}"></md-icon>
-            {{action.name}}
-        </md-button>
-      </md-item>
-    </md-list>
-
+    
 </md-bottom-sheet>
