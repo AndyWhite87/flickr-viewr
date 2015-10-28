@@ -38,8 +38,15 @@
       itemService
         .loadAllItems(self.tags)
         .then( function( items ) {
+
+          // Set searched flag to true to indicate that an initial search has happened
           self.searched = true;
+
+          // Update self.items to contain the items returned from flickrItemService
           self.items    = [].concat(items);
+
+          // Scroll to top of page after each new search
+          document.querySelector("#content").scrollTop = 0;
         });
     }
 
@@ -86,7 +93,6 @@
             self.tags = tag;
             self.searchTags();
             this.close();
-            document.querySelector("#content").scrollTop = 0;
           };
 
           this.close = function() {
@@ -109,10 +115,6 @@
         hideDelay: 0,
       });
 
-      setTimeout(function(){
-        document.querySelector('#tags-search-input').select();
-      }, 300);
-
       /**
        * Controller for tags search area
        * @param $mdToast
@@ -129,6 +131,13 @@
         this.close = function() {
           $mdToast.hide();
         };
+
+        // Focus the search input and select its contents after the search bar has opened
+        setTimeout(function(){
+          var input = document.querySelector('#tags-search-input');
+          input.focus();
+          input.select();
+        }, 300);
       }
 
     }
