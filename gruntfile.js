@@ -167,8 +167,16 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: '<%= s %>app/favicon',
-            src: '*',
+            src: '*.svg, *.png, *.jpg',
             dest: '<%= d %>favicon',
+            filter: 'isFile'
+          },
+          // Image files
+          {
+            expand: true,
+            cwd: '<%= s %>app/img',
+            src: '*',
+            dest: '<%= d %>img',
             filter: 'isFile'
           }
         ]

@@ -139,6 +139,18 @@ md-content,
 #content .no-results p {
   text-align: center;
 }
+#content .app-loading {
+  margin-top: 0;
+}
+#content .app-loading .app-icon {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: -5em;
+  display: inline-block;
+}
+#content .app-loading .app-loading-text {
+  padding-left: 1em;
+}
 /* Image details area */
 md-bottom-sheet {
   overflow-y: auto;

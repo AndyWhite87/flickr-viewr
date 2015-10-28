@@ -14,7 +14,6 @@ md-content.md-default-theme, md-content,
 }
 
 #content {
-
   top: @toolbar-med - 10px;
 
   @media(max-width: @med) {
@@ -117,6 +116,21 @@ md-content.md-default-theme, md-content,
 
     &, p {
       text-align: center;
+    }
+  }
+
+  .app-loading {
+    margin-top: 0;
+
+    .app-icon {
+      width: 50%;
+      margin: 0 auto;
+      margin-bottom: -5em;
+      display: inline-block;
+    }
+
+    .app-loading-text {
+      padding-left: 1em;
     }
   }
 }
