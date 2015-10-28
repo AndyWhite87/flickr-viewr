@@ -33,10 +33,18 @@ md-bottom-sheet {
   
   .description-container {    
     padding-top: 0;
+
+    @media (max-width: @sml) {
+      padding: 0 16px;
+    }
   }
 
   .tags-container {
     padding-left: 0;
+
+    @media (max-width: @sml) {
+      padding: 0 8px;
+    }
 
     h3 {
       margin-top: 0;

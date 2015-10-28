@@ -29,8 +29,8 @@
 
     <md-content flex layout="row" layout-sm="column" layout-align="left">
 
-        <div layout-padding flex class="details-image-container">
-            <img src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
+        <div layout-padding layout="column" flex class="details-image-container">
+            <img ng-src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
         </div>
 
         <md-content flex layout="column" layout-align="top">
