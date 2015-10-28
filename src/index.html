@@ -29,7 +29,7 @@
 
   </head>
 
-  <body ng-app="flickrViewr" layout="row" ng-controller="FlickrItemController as ctrl" ng-cloak >
+  <body ng-app="flickrViewr" ng-controller="FlickrItemController as ctrl" ng-cloak>
 
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
@@ -62,7 +62,8 @@
                  style="background-image:url('{{item.media.m}}');">
             </div>            
             
-              <md-subheader layout="column" flex>
+              <md-subheader layout="column" flex class="item-headers">
+
                 <h1 class="md-display-3">
                   <a href="" title="{{ item.title }}" ng-click="ctrl.showItemDetails(item, $event)">
                     <span>{{ item.title }}</span>
@@ -94,6 +95,7 @@
                   </md-content>
                 
                 </h2>
+
               </md-subheader>
           </md-content>
 

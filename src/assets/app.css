@@ -6,7 +6,6 @@ body {
   height: 100%;
   margin: 0px;
   padding: 0px;
-  overflow: hidden;
 }
 /* Variables */
 /* Mixins */
@@ -28,9 +27,15 @@ md-content,
   background-color: transparent;
 }
 #content {
+  top: 64px;
   /* Item list and photos */
   /* Item list headers */
   /* Placeholder content for loading and error states */
+}
+@media (max-width: 1200px) {
+  #content {
+    top: 48px;
+  }
 }
 #content md-list-item {
   padding: 0;
@@ -69,6 +74,9 @@ md-content,
 }
 #content md-list-item:nth-child(even) .photo-wrap {
   border-color: #ffffff;
+}
+#content .item-headers {
+  overflow: hidden;
 }
 #content .md-subheader h1 {
   margin-top: 0.9em;
@@ -129,12 +137,19 @@ md-content,
 /* Image details area */
 md-bottom-sheet {
   overflow-y: auto;
-  max-height: calc(100% - 73px);
+  height: calc(100% - 73px);
+  position: fixed;
+  bottom: 0;
 }
 @media (max-width: 800px) {
   md-bottom-sheet {
-    max-height: calc(100% - 57px);
+    height: calc(100% - 57px);
   }
+}
+md-bottom-sheet .details-sheet-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 5vh;
 }
 md-bottom-sheet .details-header a {
   display: block;
@@ -144,7 +159,8 @@ md-bottom-sheet .details-header a {
   text-overflow: ellipsis;
 }
 md-bottom-sheet .details-close-button {
-  margin-top: 2.75em;
+  margin-top: 0;
+  padding: 0;
 }
 md-bottom-sheet .details-image-container {
   margin-left: 6px;
@@ -182,17 +198,24 @@ md-bottom-sheet .tags-container .md-chips {
 md-bottom-sheet .tags-container .md-chips .md-chip {
   background: #e0e0e0;
   cursor: pointer;
+  padding: 0px 12px;
 }
 md-bottom-sheet .tags-container .md-chips .md-chip:hover,
 md-bottom-sheet .tags-container .md-chips .md-chip:active {
   background: #c7c7c7;
 }
-span.name {
-  font-weight: bold;
-  font-size: 1.1em;
-  padding-left: 5px;
+md-bottom-sheet .tags-container .md-chips .md-chip .md-chip-content {
+  padding: 0;
+}
+md-backdrop {
+  position: fixed;
 }
 /* Toolbar area */
+md-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 60;
+}
 @media (max-width: 800px) {
   md-toolbar {
     min-height: 48px !important;

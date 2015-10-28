@@ -46,7 +46,9 @@
           self.items    = [].concat(items);
 
           // Scroll to top of page after each new search
-          document.querySelector("#content").scrollTop = 0;
+          setTimeout(function(){
+            window.scrollTo(0, 0);
+          }, 0);
         });
     }
 

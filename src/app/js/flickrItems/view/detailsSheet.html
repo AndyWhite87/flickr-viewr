@@ -1,61 +1,61 @@
 <md-bottom-sheet class="md-list md-has-header">
 
-    <md-content flex layout="row">
+    <div class="details-sheet-wrapper">
 
         <md-subheader flex>
-            <h1 class="md-display-1 details-header">
-                <a href="{{ detailsCtrl.item.link }}" title="{{ detailsCtrl.item.title }}"  target="flickrViewr-Flickr">
+
+            <h1 layout="row" class="md-display-1 details-header">
+                <a href="{{ detailsCtrl.item.link }}" title="{{ detailsCtrl.item.title }}" target="flickrViewr-Flickr" flex>
                     {{ detailsCtrl.item.title }}
                 </a>
+
+                <md-button class="md-primary details-close-button" ng-click="detailsCtrl.close()">
+                    Back
+                </md-button>
             </h1>
 
-            <h2 class="md-subhead">
+            <h2 layout-sm="column" class="md-subhead">
                 <a href="{{ detailsCtrl.item.authorLink }}" title="{{ detailsCtrl.item.author }}" target="flickrViewr-Flickr">
                     {{ detailsCtrl.item.author }}
                 </a>
 
-                | <span hide show-gt-sm>Published:</span>
+                <span hide show-gt-sm>| Published:</span>
                 {{ detailsCtrl.item.published }}
+
             </h2>
         </md-subheader>
 
-        <div flex="none">
-            <md-button class="md-primary details-close-button" ng-click="detailsCtrl.close()">
-                Back
-            </md-button>
-        </div>
+        <div flex layout="row" layout-sm="column" layout-align="left">
 
-    </md-content>
-
-    <md-content flex layout="row" layout-sm="column" layout-align="left">
-
-        <div layout-padding layout="column" flex class="details-image-container">
-            <img ng-src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
-        </div>
-
-        <md-content flex layout="column" layout-align="top">
-
-            <div layout-padding ng-if="detailsCtrl.item.description.length > 0" class="description-container">
-                <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
+            <div layout-padding layout="column" class="details-image-container">
+                <img ng-src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
             </div>
 
-            <div layout-padding ng-if="detailsCtrl.item.tags.length > 0" class="tags-container">
-                <md-content flex layout="column">
-                    <h3 flex class="md-body-1">Tags:</h3>
+            <div flex layout="column" layout-align="top" class="details-container">
 
-                    <div class="md-chips">
-                        <span ng-repeat="tag in detailsCtrl.item.tags">
-                            <md-chip class="md-chip" title="Search for images tagged '{{ tag }}'" ng-click="detailsCtrl.search(tag)">
-                                <div class="md-chip-content">{{ tag }}</div>
-                            </md-chip>
-                        </span>
-                    </div>
+                <div layout-padding ng-if="detailsCtrl.item.description.length > 0" class="description-container">
+                    <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
+                </div>
 
-                </md-content>
+                <div layout-padding ng-if="detailsCtrl.item.tags.length > 0" class="tags-container">
+                    <md-content flex layout="column">
+                        <h3 flex class="md-body-1">Tags:</h3>
+
+                        <div class="md-chips">
+                            <span ng-repeat="tag in detailsCtrl.item.tags">
+                                <md-chip class="md-chip" title="Search for images tagged '{{ tag }}'" ng-click="detailsCtrl.search(tag)">
+                                    <div class="md-chip-content">{{ tag }}</div>
+                                </md-chip>
+                            </span>
+                        </div>
+
+                    </md-content>
+                </div>
+
             </div>
 
-        </md-content>
+        </div>
 
-    </md-content>
+    </div>
     
 </md-bottom-sheet>

@@ -11,6 +11,12 @@ md-content.md-default-theme, md-content,
 
 #content {
 
+  top: @toolbar-med - 10px;
+
+  @media(max-width: @med) {
+    top: @toolbar-sml - 10px;
+  }
+
   /* Item list and photos */
   md-list-item {
     padding: 0;
@@ -54,6 +60,10 @@ md-content.md-default-theme, md-content,
   }
 
   /* Item list headers */
+  .item-headers {
+    overflow: hidden;
+  }
+
   .md-subheader {
     h1 {
       margin-top: 0.9em;

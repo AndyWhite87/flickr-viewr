@@ -3,10 +3,18 @@
 
 md-bottom-sheet {
   overflow-y: auto;
-  max-height: calc(~"100%" - (@toolbar-med - 1px));
+  height: calc(~"100%" - (@toolbar-med - 1px));
+  position: fixed;
+  bottom: 0;
 
   @media (max-width: @sml) {
-    max-height: calc(~"100%" - (@toolbar-sml - 1px));
+    height: calc(~"100%" - (@toolbar-sml - 1px));
+  }
+
+  .details-sheet-wrapper {
+    max-width: @max-app-width;
+    margin: 0 auto;
+    padding-bottom: 5vh;
   }
 
   .details-header {
@@ -16,7 +24,8 @@ md-bottom-sheet {
   }
 
   .details-close-button {
-    margin-top: 2.75em;
+    margin-top: 0;
+    padding: 0;
   }
   
   .details-image-container {
@@ -56,18 +65,21 @@ md-bottom-sheet {
 
       .md-chip {
         background: @gray;
-        cursor: pointer;      
+        cursor: pointer;
+        padding: 0px 12px;
 
         &:hover, &:active {
           background: @gray-dark;
+        }
+
+        .md-chip-content {
+          padding: 0;          
         }
       }    
     }
   }
 }
 
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
+md-backdrop {
+  position: fixed;  
 }
