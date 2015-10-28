@@ -4,19 +4,17 @@
 md-toolbar {
 
   @media (max-width: @sml) {
-    min-height: 48px !important; // Match height of search area
+    min-height: (@toolbar-sml - 10px) !important;
   }
   
   h1 {
+    padding-left: 88px; // Allow for search button
     margin: auto;
     font-size: 1.250em;
     font-weight: 400;
     text-align: center;
     max-height: 1.25em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding-left: 88px;            // Allow for search button
+    .text-overflow();
 
     @media (max-width: @sml) {
       text-align: left;

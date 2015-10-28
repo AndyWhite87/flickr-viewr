@@ -9,6 +9,14 @@ body {
   overflow: hidden;
 }
 /* Variables */
+/* Mixins */
+.text-overflow {
+  display: block;
+  overflow: hidden;
+  height: 1.25em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 /* Import other less files */
 /* Core content styles */
 /* Prevent white background in md-content areas */
@@ -80,12 +88,12 @@ md-content,
   margin-bottom: 0;
 }
 #content .md-subheader h2 .author-link {
-  display: block;
-  height: 1.25em;
   margin-right: 0.5em;
+  display: block;
   overflow: hidden;
-  text-overflow: ellipsis;
+  height: 1.25em;
   white-space: nowrap;
+  text-overflow: ellipsis;
 }
 @media (max-width: 1200px) {
   #content .md-subheader h2 {
@@ -112,7 +120,22 @@ md-content,
 /* Image details area */
 md-bottom-sheet {
   overflow-y: auto;
-  max-height: 100%;
+  max-height: calc(100% - 73px);
+}
+@media (max-width: 800px) {
+  md-bottom-sheet {
+    max-height: calc(100% - 57px);
+  }
+}
+md-bottom-sheet .details-header a {
+  display: block;
+  overflow: hidden;
+  height: 1.25em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+md-bottom-sheet .details-close-button {
+  margin-top: 2.75em;
 }
 md-bottom-sheet md-icon {
   margin-right: 20px;
@@ -137,15 +160,17 @@ span.name {
   }
 }
 md-toolbar h1 {
+  padding-left: 88px;
   margin: auto;
   font-size: 1.250em;
   font-weight: 400;
   text-align: center;
   max-height: 1.25em;
+  display: block;
   overflow: hidden;
-  text-overflow: ellipsis;
+  height: 1.25em;
   white-space: nowrap;
-  padding-left: 88px;
+  text-overflow: ellipsis;
 }
 @media (max-width: 800px) {
   md-toolbar h1 {

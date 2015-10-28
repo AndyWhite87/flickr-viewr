@@ -10,8 +10,12 @@ html, body {
 }
 
 /* Variables */
-@sml: 800px;   // Small device breakpoint (eg phone)
-@med: 1200px;  // Medium device breakpoint (eg tablet)
+@sml: 800px;        // Small device breakpoint (eg phone)
+@med: 1200px;       // Medium device breakpoint (eg tablet)
+
+@toolbar-sml: 58px; // Height of toolbar in sml breakpoint
+@toolbar-med: 74px; // Height of toolbar in med breakpoint
+
 @text-color: rgba(0,0,0,0.87);
 @white: rgb(255,255,255);
 @blue: rgb(33,150,243);
@@ -19,6 +23,15 @@ html, body {
 @gray: rgb(224,224,224);
 @gray-light: lighten(rgb(224,224,224), 5%);
 @gray-dark: darken(rgb(224,224,224), 10%);
+
+/* Mixins */
+.text-overflow {
+  display: block;
+  overflow: hidden;
+  height: 1.25em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 /* Import other less files */
 @import 'content';

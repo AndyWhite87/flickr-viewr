@@ -3,7 +3,21 @@
 
 md-bottom-sheet {
   overflow-y: auto;
-  max-height: 100%;
+  max-height: calc(~"100%" - (@toolbar-med - 1px));
+
+  @media (max-width: @sml) {
+    max-height: calc(~"100%" - (@toolbar-sml - 1px));
+  }
+
+  .details-header {
+    a {
+      .text-overflow();
+    }
+  }
+
+  .details-close-button {
+    margin-top: 2.75em;
+  }
   
   md-icon {
     margin-right:20px;

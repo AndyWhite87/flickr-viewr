@@ -62,11 +62,7 @@ md-content.md-default-theme, md-content,
         display: block;
 
         span {
-          display: block;
-          overflow: hidden;
-          height: 1.25em;
-          white-space: nowrap;
-          text-overflow: ellipsis;
+          .text-overflow();
         }
       }
     }
@@ -75,12 +71,8 @@ md-content.md-default-theme, md-content,
       margin-bottom: 0;
 
       .author-link {
-        display: block;
-        height: 1.25em;
         margin-right: 0.5em;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        .text-overflow();
       }
 
       @media(max-width: @med) {
