@@ -90,11 +90,9 @@
           // Fix for Angular Material touch event issue, adapted from jjf1's workaround
           // https://github.com/angular/material/issues/2073
           setTimeout(function() {
-            function overrideTouchMove(e) {            
+            document.querySelector('.details-sheet-wrapper').addEventListener('touchmove', function(e) {            
                 e.stopPropagation();
-            }
-            document.querySelector('.details-sheet-wrapper').addEventListener('touchstart', overrideTouchMove);
-            document.querySelector('.details-sheet-wrapper').addEventListener('click', overrideTouchMove);
+            });
           }, 0);
 
           this.submitContact = function(action) {
