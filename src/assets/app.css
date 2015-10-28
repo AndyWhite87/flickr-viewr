@@ -142,19 +142,20 @@ md-content,
 /* Image details area */
 md-bottom-sheet {
   overflow-y: auto;
-  height: calc(100% - 73px);
+  height: calc(100% - 66px);
   position: fixed;
-  bottom: 0;
+  padding-bottom: 0;
+  transform: translate3d(0, 0, 0);
 }
 @media (max-width: 800px) {
   md-bottom-sheet {
-    height: calc(100% - 57px);
+    height: calc(100% - 50px);
   }
 }
 md-bottom-sheet .details-sheet-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding-bottom: 5vh;
+  padding-bottom: 1em;
 }
 md-bottom-sheet .details-header a {
   display: block;

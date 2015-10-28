@@ -3,18 +3,19 @@
 
 md-bottom-sheet {
   overflow-y: auto;
-  height: calc(~"100%" - (@toolbar-med - 1px));
+  height: calc(~"100%" - (@toolbar-med - 8px));
   position: fixed;
-  bottom: 0;
+  padding-bottom: 0;
+  transform: translate3d(0, 0, 0);
 
   @media (max-width: @sml) {
-    height: calc(~"100%" - (@toolbar-sml - 1px));
+    height: calc(~"100%" - (@toolbar-sml - 8px));
   }
 
   .details-sheet-wrapper {
     max-width: @max-app-width;
     margin: 0 auto;
-    padding-bottom: 5vh;
+    padding-bottom: 1em;
   }
 
   .details-header {

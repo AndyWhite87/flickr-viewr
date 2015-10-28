@@ -87,6 +87,15 @@
             { name: 'Hangout'     , icon: 'hangouts'    , icon_url: 'assets/svg/hangouts.svg'}
           ];
 
+          function overrideTouchMove(e) {            
+              e.stopPropagation();
+          }
+
+          setTimeout(function() {
+            document.querySelector('.details-sheet-wrapper').addEventListener('touchstart', overrideTouchMove);
+            document.querySelector('.details-sheet-wrapper').addEventListener('click', overrideTouchMove);
+          }, 0);
+
           this.submitContact = function(action) {
             $mdBottomSheet.hide(action);
           };
