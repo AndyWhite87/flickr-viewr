@@ -173,6 +173,11 @@ md-bottom-sheet .details-image-container {
   margin-right: 1em;
   max-width: 100%;
 }
+@media (max-width: 1200px) {
+  md-bottom-sheet .details-image-container {
+    max-width: 50%;
+  }
+}
 md-bottom-sheet .details-image-container img {
   border: 0.3em solid #e0e0e0;
   max-width: 100%;
