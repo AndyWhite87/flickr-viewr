@@ -29,20 +29,22 @@
 
   <div flex layout="column" tabIndex="-1" role="main" class="md-whiteframe-z2">
 
-    <md-toolbar layout="row" class="md-whiteframe-z1" id="toolbar">
-      
-      <h1 flex>        Flickr Viewr
-      </h1>
+    <md-toolbar layout="column" class="md-whiteframe-z1" id="toolbar">
+      <div class="toolbar-wrapper" layout="row" flex>
 
-      <md-button flex="none" class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
+        <h1 flex>          Flickr Viewr
+        </h1>
 
+        <md-button flex="none" class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
+
+      </div>
     </md-toolbar>
 
     <md-content flex id="content">
 
-      <md-list ng-if="ctrl.items.length > 0">
+      <md-list layout="column" ng-if="ctrl.items.length > 0">
 
-        <md-list-item ng-repeat="item in ctrl.items">
+        <md-list-item flex ng-repeat="item in ctrl.items">
               
           <md-content flex layout="row" layout-align="left">
 

@@ -6,20 +6,24 @@ md-toolbar {
   @media (max-width: @sml) {
     min-height: (@toolbar-sml - 10px) !important;
   }
-  
-  h1 {
-    padding-left: 88px; // Allow for search button
-    margin: auto;
-    font-size: 1.250em;
-    font-weight: 400;
-    text-align: center;
-    max-height: 1.25em;
-    .text-overflow();
 
-    @media (max-width: @sml) {
-      text-align: left;
-      padding-left: 1em;
-      padding-right: 1em;
+  .toolbar-wrapper {  
+    max-width: @max-app-width;
+
+    h1 {
+      padding-left: 88px; // Allow for search button
+      margin: auto;
+      font-size: 1.250em;
+      font-weight: 400;
+      text-align: center;
+      max-height: 1.25em;
+      .text-overflow();
+
+      @media (max-width: @sml) {
+        text-align: left;
+        padding-left: 1em;
+        padding-right: 1em;
+      }
     }
-}
+  }
 }
