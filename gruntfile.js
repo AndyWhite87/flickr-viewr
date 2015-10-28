@@ -162,6 +162,14 @@ module.exports = function(grunt) {
             src: '*.html',
             dest: '<%= d %>js/flickrItems/view',
             filter: 'isFile'
+          },
+          // Favicon files
+          {
+            expand: true,
+            cwd: '<%= s %>app/favicon',
+            src: '*',
+            dest: '<%= d %>favicon',
+            filter: 'isFile'
           }
         ]
       }
