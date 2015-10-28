@@ -19,19 +19,42 @@ md-bottom-sheet {
     margin-top: 2.75em;
   }
   
-  md-icon {
-    margin-right:20px;
+  .details-image-container {
+    margin-left: 6px;
+    margin-right: 1em;
+    max-width: 100%;
+
+    img {
+      border: @image-border;
+      max-width: 100%;
+      border-radius: 0.5em;
+    }    
+  }
+  
+  .description-container {    
+    padding-top: 0;
   }
 
-  .md-chips {
-    .md-chip {
-      background: @gray;
-      cursor: pointer;
+  .tags-container {
+    padding-left: 0;
 
-      &:hover, &:active {
-        background: @gray-dark;
-      }
-    }    
+    h3 {
+      margin-top: 0;
+    }
+
+    .md-chips {
+      padding-top: 0;
+      padding-left: 0;
+
+      .md-chip {
+        background: @gray;
+        cursor: pointer;      
+
+        &:hover, &:active {
+          background: @gray-dark;
+        }
+      }    
+    }
   }
 }
 

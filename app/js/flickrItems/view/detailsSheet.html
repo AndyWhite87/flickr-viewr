@@ -14,7 +14,8 @@
                     {{ detailsCtrl.item.author }}
                 </a>
 
-                | Published: {{ detailsCtrl.item.published }}
+                | <span hide show-gt-sm>Published:</span>
+                {{ detailsCtrl.item.published }}
             </h2>
         </md-subheader>
 
@@ -26,19 +27,19 @@
 
     </md-content>
 
-    <md-content flex layout="row" layout-align="left">
+    <md-content flex layout="row" layout-sm="column" layout-align="left">
 
-        <div layout-padding>
+        <div layout-padding flex class="details-image-container">
             <img src="{{detailsCtrl.item.src}}" ng-click="ctrl.showItemDetails(detailsCtrl.item, $event)"></img>
         </div>
 
         <md-content flex layout="column" layout-align="top">
 
-            <div layout-padding ng-if="detailsCtrl.item.description.length > 0">
+            <div layout-padding ng-if="detailsCtrl.item.description.length > 0" class="description-container">
                 <p ng-repeat="line in detailsCtrl.item.description" ng-bind-html="line"></p>
             </div>
 
-            <div layout-padding ng-if="detailsCtrl.item.tags.length > 0">
+            <div layout-padding ng-if="detailsCtrl.item.tags.length > 0" class="tags-container">
                 <md-content flex layout="column">
                     <h3 flex class="md-body-1">Tags:</h3>
 
