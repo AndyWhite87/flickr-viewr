@@ -335,7 +335,7 @@ md-toolbar .toolbar-wrapper .search-button {
 @media (max-width: 800px) {
   #tags-search-container input {
     display: inline-block !important;
-    width: calc(95.5%);
+    width: calc(100% - 4.5em);
     height: 3em;
     line-height: 3.5em;
   }
@@ -367,6 +367,6 @@ a {
   color: #2196f3;
 }
 a:hover,
-aactive {
+a:active {
   color: #f44336;
 }
