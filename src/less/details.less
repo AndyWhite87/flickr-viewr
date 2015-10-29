@@ -29,16 +29,27 @@ md-bottom-sheet {
     padding: 0;
   }
   
-  .details-image-container {
+  .details-container {
+    max-width: calc(~"50% - 2em");
+    display: inline-block !important;
+    vertical-align: top;
+
+    @media (max-width: @sml) {
+      display: block !important;
+      max-width: 100%;
+    }
+  }
+
+  .details-image-container
+   {
     margin-left: 6px;
     margin-right: 1em;
-    max-width: 100%;
+    max-width: 50%;
+    display: inline-block !important;
+    vertical-align: top;
 
-    @media (max-width: @med) {
-      max-width: 50%;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: @sml) {
+      display: block !important;
       max-width: 100%;
     }
 
@@ -46,6 +57,10 @@ md-bottom-sheet {
       border: @image-border;
       max-width: 100%;
       border-radius: 0.5em;
+
+      @media (max-width: @sml) {
+        width: calc(~"100% - 1em");
+      }
     }    
   }
   

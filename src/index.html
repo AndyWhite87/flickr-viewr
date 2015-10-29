@@ -65,7 +65,7 @@
           Flickr Viewr
         </h1>
 
-        <md-button flex="none" class="md-accent" ng-click="ctrl.showTagSearch()">Search</md-button>
+        <md-button flex="none" class="md-accent search-button" ng-click="ctrl.showTagSearch()">Search</md-button>
 
       </div>
     </md-toolbar>
@@ -76,7 +76,7 @@
 
         <md-list-item flex ng-repeat="item in ctrl.items">
               
-          <md-content flex layout="row" layout-align="left">
+          <div flex layout="row" layout-align="left">
 
             <div flex="none"
                  class="layout-column photo-wrap"
@@ -98,7 +98,7 @@
                     <span>{{ item.published }}</span>
                   </md-content>
 
-                  <md-content layout="row">
+                  <div layout="row" class="details-container">
 
                     <span flex flex-gt-sm="20">
                       <a class="author-link" href="{{item.authorLink}}" title="{{ item.author }}" target="flickrViewr-Flickr">
@@ -114,18 +114,18 @@
                       </a>
                     </span>
 
-                  </md-content>
+                  </div>
                 
                 </h2>
 
               </md-subheader>
-          </md-content>
+          </div>
 
         </md-list-item>
 
       </md-list>
 
-      <div class="app-loading">
+      <div ng-if="!ctrl.searched" class="app-loading">
 
         <img src="./app/img/fv-icon.svg" class="app-icon" />
         <p class="md-headline app-loading-text">

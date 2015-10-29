@@ -114,7 +114,7 @@
           var relevantDigits = (day < 30) ? day % 20 : day % 30;
           var daySuffix = (relevantDigits <= 3) ? daySuffixes[relevantDigits] : daySuffixes[0];
 
-          item.published = day + daySuffix + $filter('date')(published, " MMM yyyy 'at' h:mm");
+          item.published = day + daySuffix + $filter('date')(published, " MMM yyyy 'at' hh:mm");
         }
 
         return item;
