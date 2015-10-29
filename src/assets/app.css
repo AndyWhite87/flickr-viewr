@@ -334,6 +334,8 @@ md-toolbar .toolbar-wrapper .search-button {
 }
 @media (max-width: 800px) {
   #tags-search-container input {
+    display: inline-block !important;
+    width: calc(95.5%);
     height: 3em;
     line-height: 3.5em;
   }
