@@ -7,25 +7,44 @@ md-toolbar {
   z-index: 60;
 
   @media (max-width: @sml) {
-    min-height: (@toolbar-sml - 10px) !important;
+    min-height: @toolbar-sml !important;
   }
 
-  .toolbar-wrapper {  
+  .toolbar-wrapper {
+    position: relative;
+    width: 100%;
     max-width: @max-app-width;
+    margin: 0 auto;
 
     h1 {
+      .text-overflow();
       padding-left: 88px; // Allow for search button
       margin: auto;
       font-size: 1.250em;
       font-weight: 400;
       text-align: center;
-      max-height: 1.25em;
-      .text-overflow();
+      height: @toolbar-med;
+      max-height: @toolbar-med;
+      line-height: @toolbar-med;
 
       @media (max-width: @sml) {
+        height: @toolbar-sml;
+        max-height: @toolbar-sml;
+        line-height: @toolbar-sml;
         text-align: left;
         padding-left: 1em;
         padding-right: 1em;
+      }
+    }
+
+    .search-button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      margin-top: 1em;
+
+      @media (max-width: @sml) {
+        margin-top: 0.5em;
       }
     }
   }
