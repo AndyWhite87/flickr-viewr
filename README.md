@@ -7,6 +7,16 @@
 
 Flickr Viewr displays the 20 latest images on Flickr that match the tags you search for. Click a photo to view it in high resolution, and click its tags to see related photos.
 
+## Browser support
+
+Support has been tested for and confirmed on the following browsers:
+
+- Edge 12
+- IE 10+
+- Safari 8+
+- Chrome 40+
+- Firefox 35+
+
 ## Development
 
 ### Setup
