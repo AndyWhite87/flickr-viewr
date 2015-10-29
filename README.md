@@ -5,7 +5,7 @@
 [![Build Status](https://travis-ci.org/AndyWhite87/flickr-viewr.svg?branch=master)](https://travis-ci.org/AndyWhite87/flickr-viewr)
 [![Coverage Status](https://coveralls.io/repos/AndyWhite87/flickr-viewr/badge.svg?branch=master&service=github)](https://coveralls.io/github/AndyWhite87/flickr-viewr?branch=master)
 
-Flickr Viewr displays the 20 latest images on Flickr that match the tags you search for. Click a photo to view it in high resolution, and click its tags to see related photos.
+Flickr Viewr displays the 20 latest images on Flickr matching the tags you search for. Click a photo to view it in high resolution, and click its tags to see related photos.
 
 ## Browser support
 
@@ -65,6 +65,6 @@ Runs JSHint, Jasmine and code coverage in the same way as the test task, then co
 
 The Flickr Viewr project includes a set of tests (in the `test` directory) written in Jasmine (http://jasmine.github.io/). These tests are run as part of the `grunt build` task - any failures will cause the build to fail, meaning that all tests must pass in order for any changes to be committed to the built files.
 
-In addition, code coverage is measured by Istanbul (https://github.com/taichi/grunt-istanbul). Code coverage thresholds are set within `gruntfile.js` If code coverage slips below these thresholds the build will fail.
+In addition, code coverage is measured by Istanbul (https://github.com/taichi/grunt-istanbul). Code coverage thresholds are set within `gruntfile.js`. If code coverage slips below these thresholds the build will fail.
 
-Finally, the project is configured to run within Travis CI (https://travis-ci.org/) and for code coverage to be monitored by Coveralls (https://coveralls.io/). These services power the **build** and **coverage** badges at the top of this readme, an provide useful feedback to help fix errors and improve code coverage. Visit those sites to enable their services for your own repo - once enabled, they'll process the code each time you push a commit to github.
+Finally, the project is configured to run within Travis CI (https://travis-ci.org/) and for code coverage to be monitored by Coveralls (https://coveralls.io/). These services power the **build** and **coverage** badges at the top of this readme, an provide useful feedback to help fix errors and improve code coverage. Visit those sites to enable these services for your own repo. Once enabled, they'll process the code each time you push a commit to github.
