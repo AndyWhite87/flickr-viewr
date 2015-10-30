@@ -23,7 +23,7 @@ Support has been tested for and confirmed on the following browsers:
 
 ### Setup
 
-To download the source and prepare you environment for local development, first make sure Node, Bower and the Grunt CLI are all installed:
+To download the source and prepare your environment for local development, first make sure Node, Bower and the Grunt CLI are all installed:
 
 - Node: https://nodejs.org/
 - Bower: with Node installed, run `npm install -g bower` from a command line
