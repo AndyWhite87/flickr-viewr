@@ -7,7 +7,7 @@
 
 Flickr Viewr displays the 20 latest images on Flickr matching the tags you search for. Click a photo to view it in high resolution, and click its tags to see related photos.
 
-Use it here: **http://andywhite87.github.io/flickr-viewr/**
+Use it here: **http://wsydna.github.io/flickr-viewr/**
 
 ## Browser support
 
