@@ -31,7 +31,7 @@ To download the source and prepare your environment for local development, first
 
 Then:
 
-0. Fork or clone this repository (https://github.com/AndyWhite87/flickr-viewr.git)
+0. Fork or clone this repository (https://github.com/wsydna/flickr-viewr.git)
 0. Open a command line in your local working directory, and run `npm install`. This will install the required node modules and bower components.
 
 After following the steps above, you're ready to start developing. However, it's advisable to serve the source files even when developing locally, to make sure your local changes reflect behaviour in a live environment. One easy way to do this is with Live Server:
